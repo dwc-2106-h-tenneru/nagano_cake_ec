@@ -34,17 +34,17 @@
 
   <div class="field">
     <%= f.label "郵便番号(ハイフンなし)" %><br />
-    <%= f.email_field :post_code, autofocus: true, autocomplete: "0000000" %>
+    <%= f.text_field :post_code, autofocus: true, autocomplete: "0000000" %>
   </div>
 
   <div class="field">
     <%= f.label "住所" %><br />
-    <%= f.email_field :address, autofocus: true, autocomplete: "東京都渋谷区代々木神園町0-0" %>
+    <%= f.text_field :address, autofocus: true, autocomplete: "東京都渋谷区代々木神園町0-0" %>
   </div>
 
   <div class="field">
     <%= f.label "電話番号(ハイフンなし)" %><br />
-    <%= f.email_field :phone_number, autofocus: true, autocomplete: "00000000000" %>
+    <%= f.text_field :phone_number, autofocus: true, autocomplete: "00000000000" %>
   </div>
 
   <div class="field">
