@@ -1,0 +1,30 @@
+<h3>商品一覧</h3>
+<%= link_to '商品登録', new_admin_item_path %>
+ <table>
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+    <tr>
+      <td><%= item.id %></td>
+      <td>
+        <%= link_to admin_item_path(item.id) do %>
+          <%= item.name %>
+        <% end %>
+      </td>
+      <!--価格表示を３桁区切りにしたいのでconverting_to_jpyを追記-->
+      <td><%= converting_to_jpy(item.price) %></td>
+      <td><%= item.genre.name %> </td>
+      <td><%= item.is_active ? '販売中' : '販売停止中' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @items %>

@@ -1,0 +1,32 @@
+<div>
+  <%= f.label :商品画像 %>
+  <%= f.attachment_field :image %>
+</div>
+
+<div>
+ <%= f.label :商品名 %>
+ <%= f.text_field :name %>
+</div>
+
+<div>
+ <%= f.label :商品説明 %>
+ <%= f.text_area :introduction %>
+</div>
+
+<div>
+  <%= f.label :ジャンル %>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => "--選択してください--" %>
+</div>
+
+<div>
+  <%= f.label :税抜価格 %>
+  <%= f.text_field :price %>円
+</div>
+
+<div>
+  <%= f.label :販売ステータス %>
+  <%= f.radio_button :is_active, true %>
+  <%= f.label :is_active, "販売中", value: true %>
+  <%= f.radio_button :is_active, false %>
+  <%= f.label :is_active, "販売停止中", value: false %>
+</div>
