@@ -11,10 +11,11 @@ class CartItemsController < ApplicationController
   def destroy_all
   end
 
-  def create
+  def update
   end
 
   private
 
 
 end
+
