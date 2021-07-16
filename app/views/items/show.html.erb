@@ -4,8 +4,13 @@
         <h3>ジャンル枠</h3>
       </div>
       <div class="col-md-8 offset-md-1">
-        <h3>商品詳細枠</h3>
-        <h4>（メモ）ここに商品のデータを持ってくる</h4>
+  <%= attachment_image_tag @item, :image %>
+  <p><%= @item.name %></p>
+  <p><%= @item.introduction %></p>
+  <p>￥<%= @item.add_tax_price.to_s(:delimited) %> (税込) </p>
+  <p>ここに「個数選択を入れる」</p>
+  <%#= link_to "カートに入れる", %>
+</div>
       </div>
     </div>
   </div>
