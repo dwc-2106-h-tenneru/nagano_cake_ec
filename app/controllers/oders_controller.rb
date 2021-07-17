@@ -17,9 +17,7 @@ class OdersController < ApplicationController
   def show
   end
 
-<<<<<<< HEAD
   private
 
-=======
->>>>>>> origin/orders-masayan
+
 end

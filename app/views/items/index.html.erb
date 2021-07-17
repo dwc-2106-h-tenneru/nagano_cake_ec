@@ -4,25 +4,14 @@
         <h3>ジャンル枠</h3>
       </div>
       <div class="col-md-8 offset-md-1">
-        <h3>商品一覧枠</h3>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
+        <h3>商品一覧</h3>
+            <% @items.each do |item| %>
+            <div class="col-lg-3 col-md-6 mb-4">
               <td>商品画像</td>
-              <td>商品名</td>
-              <td>値段</td>
-            </tr>
-          </tbody>
-        </table>
+              <%= item.name %>
+              <%= converting_to_jpy(item.add_tax_price) %>
+            </div>
         <!--テーブルを４商品横ならびの二行で、ページャ機能つける-->
-
       </div>
     </div>
   </div>
