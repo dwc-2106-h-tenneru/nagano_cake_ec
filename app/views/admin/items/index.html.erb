@@ -22,7 +22,13 @@
       <!--価格表示を３桁区切りにしたいのでconverting_to_jpyを追記-->
       <td><%= converting_to_jpy(item.price) %></td>
       <td><%= item.genre.name %> </td>
-      <td><%= item.is_active ? '販売中' : '販売停止中' %></td>
+      <td>
+        <% if item.is_active == true %>
+          <font color="green">販売中</font>
+        <% elsif item.is_active == false %>
+          <font color="silver">販売停止中</font>
+        <%  end %>
+      </td>
     </tr>
     <% end %>
   </tbody>
