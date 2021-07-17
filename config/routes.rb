@@ -6,17 +6,17 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'about' => 'homes#about'
 
-  resources :customers, only: [:show, :edit]
+  resources :customers, only: [:show, :edit, :update]
 
 
-  
+
   namespace :admin do
     root to: "homes#top"
     resources :items, only: [:new, :create, :show, :index, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
   end
-  
-  
+
+
 
 end
 #ルーティング問題
