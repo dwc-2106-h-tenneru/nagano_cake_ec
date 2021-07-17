@@ -1,0 +1,6 @@
+<h3>ジャンル編集</h3>
+  <%= form_with model:@genre, :url => {:action => :update} do |f| %>
+    <p>ジャンル名</p>
+    <%= f.text_field :name %>
+    <%= f.submit '変更を保存' %>
+  <% end %>
