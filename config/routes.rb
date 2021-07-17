@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 <<<<<<< HEAD
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :items, only: [:index, :show]
+<<<<<<< HEAD
+=======
+  resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
+>>>>>>> origin/cart_items-masayan
 =======
   
   namespace :admin do
