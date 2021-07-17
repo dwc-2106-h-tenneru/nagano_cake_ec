@@ -10,4 +10,12 @@ class ItemsController < ApplicationController
     @genres = Genre.all
   end
 
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :introduction, :image, :is_active, :price, :image_id, :genre_id)
+  end
+
+
+
 end
