@@ -1,0 +1,44 @@
+<h2>プロフィール編集</h2>
+<%= form_with model:@customer, local:true do |f| %>
+   <div class="namae">
+    名前
+    <div class="field">
+      <%= f.label "(姓)" %><br />
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "令和" %>
+    </div>
+
+    <div class="field">
+      <%= f.label "(名)" %><br />
+      <%= f.text_field :first_name, autofocus: true, autocomplete: "道子" %>
+    </div>
+  </div>
+
+  <div class="namae">
+    フリガナ
+    <div class="field">
+      <%= f.label "(セイ)" %><br />
+      <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "レイワ" %>
+    </div>
+
+    <div class="field">
+      <%= f.label "(メイ)" %><br />
+      <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "ミチコ" %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label "メール" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "sample@example.com" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "郵便番号(ハイフンなし)" %><br />
+    <%= f.text_field :post_code, autofocus: true, autocomplete: "0000000" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "住所" %><br />
+    <%= f.text_field :address, autofocus: true, autocomplete: "東京都渋谷区代々木神園町0-0" %>
+  </div>
+
+  <%= f.submit "編集内容を保存" %>
+<% end %>
