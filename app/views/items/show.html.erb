@@ -8,7 +8,9 @@
   <p><%= @item.name %></p>
   <p><%= @item.introduction %></p>
   <p>￥<%= @item.add_tax_price.to_s(:delimited) %> (税込) </p>
-  <p>「個数選択を入れる」</p>
+  <%= form_with model: @items do |f| %>
+  <%= f.select :amount, [[1], [2], [3], [4],[5]], include_blank: "個数選択" %>
+  <% end %>
   <%= link_to "カートに入れる", cart_items_path,class:"btn btn-success" %>
   <%#= link_to "カートに入れる", %>
 </div>
