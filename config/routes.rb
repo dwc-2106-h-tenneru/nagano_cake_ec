@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
 
   resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
-  resources :oders, only: [:index, :create, :destroy, :complete, :update]
+  resources :oders, only: [:index, :create, :destroy, :complete, :update,:new]
 
 
   namespace :admin do
