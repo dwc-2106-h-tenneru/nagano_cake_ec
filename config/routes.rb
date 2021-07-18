@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get 'about' => 'homes#about'
+  get 'customer/edit' => 'customers#edit'
+  patch 'customer/' => 'customers#update', as: 'update_customer'
+  get 'customer' => 'customers#show'
 
-  resources :customers, only: [:show, :edit, :update]
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
   namespace :admin do

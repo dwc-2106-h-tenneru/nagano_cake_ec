@@ -1,5 +1,5 @@
 <h2>プロフィール編集</h2>
-<%= form_with model:@customer, local:true do |f| %>
+<%= form_with model:@customer, :url => {:action => :update}, local:true do |f| %>
    <div class="namae">
     名前
     <div class="field">
