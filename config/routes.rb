@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :oders, only: [:index, :create, :destroy, :complete, :update]
 
 
-
   namespace :admin do
     root to: "homes#top"
     resources :items, only: [:new, :create, :show, :index, :edit, :update]
