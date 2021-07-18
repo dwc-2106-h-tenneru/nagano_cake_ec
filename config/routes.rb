@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get 'customer/edit' => 'customers#edit'
   patch 'customer/' => 'customers#update', as: 'update_customer'
   get 'customer' => 'customers#show'
+  get 'customer/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
+  patch 'customer/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
+  put 'customer/withdraw' => 'customers#withdraw'
 
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
