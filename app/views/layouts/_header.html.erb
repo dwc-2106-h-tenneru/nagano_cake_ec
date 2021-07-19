@@ -5,27 +5,29 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <a class="navbar-brand" href="/">Logo</a>
-      <ul class="navbar-nav ml-auto">
+
         <% if customer_signed_in? %>
-          <p>ようこそ、<%= @customer.last_name %>さん！</p>
-          <li class="nav-item">
-          <%= link_to 'マイページ', customer_path,class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'nav-link' %>
-          </li>
+          <p class="offset-md-4">ようこそ、<%= @customer.last_name %>さん！</p>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <%= link_to 'マイページ', customer_path,class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'nav-link' %>
+            </li>
         <% else %>
-          <li class="nav-item">
-          <%= link_to 'About', about_path,class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "新規登録", new_customer_registration_path,class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "ログイン", new_customer_session_path,class: 'nav-link' %>
-          </li>
+            <li class="nav-item">
+            <%= link_to 'About', about_path,class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_customer_registration_path,class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_customer_session_path,class: 'nav-link' %>
+            </li>
+          </ul>
         <% end %>
-      </ul>
+
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
