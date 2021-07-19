@@ -18,7 +18,7 @@ class CustomersController < ApplicationController
   end
 
   def withdraw
-    @customer = cCustomer.find(1)
+    @customer = Customer.find(1)
     @customer.update(is_deleted: false)
     reset_session
     redirect_to root_path
