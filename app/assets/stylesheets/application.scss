@@ -13,4 +13,10 @@
  *= require_tree .
  *= require_self
  */
+<<<<<<< HEAD:app/assets/stylesheets/application.scss
  @import "bootstrap";
+=======
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+>>>>>>> origin/develop:app/assets/stylesheets/application.css

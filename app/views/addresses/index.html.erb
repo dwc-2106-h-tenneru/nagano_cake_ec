@@ -1,0 +1,16 @@
+<h1>配送先登録/一覧</h1>
+
+<%= render 'addresses/new', address: @address %>
+
+<div class="address_index">
+  <% @addresses.each do |address| %>
+    <P>郵便番号</P>
+    <span><%= address.post_code%></span>
+    <p>住所</p>
+    <span><%=address.address%></span>
+    <p>宛名</p>
+    <span><%=address.name%></span>
+    <%= link_to "編集する", edit_address_path(address.id),class: "btn btn-success" %>
+    <%= link_to "削除する", address_path(address.id),class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <% end %>
+</div>
