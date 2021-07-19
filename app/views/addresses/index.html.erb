@@ -10,7 +10,7 @@
     <span><%=address.address%></span>
     <p>宛名</p>
     <span><%=address.name%></span>
-    <%= link_to "編集する", edit_address_path(address.id) %>
-    <%= link_to "削除する", address_path(address.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    <%= link_to "編集する", edit_address_path(address.id),class: "btn btn-success" %>
+    <%= link_to "削除する", address_path(address.id),class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
   <% end %>
 </div>

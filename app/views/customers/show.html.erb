@@ -1,6 +1,6 @@
 <h2>マイページ</h2>
 
-<h4>登録情報</h4> <p><%= link_to "編集する",controller: "customers", action: "edit" %></p>
+<h4>登録情報</h4> <p><%= link_to "編集する",customer_edit_path, class: "btn btn-success" %></p>
 
 <!--% @customer.each do |customer| %-->
 <div>
@@ -14,5 +14,5 @@
 </div>
 
 
-<h4>配送先</h4><%= link_to"一覧を見る", addresses_path %>
+<h4>配送先</h4><%= link_to"一覧を見る", addresses_path,class: "btn btn-primary" %>
 <h4>注文履歴</h4><!--注文履歴一覧リンク-->
