@@ -1,0 +1,18 @@
+<h2>マイページ</h2>
+
+<h4>登録情報</h4> <p><%= link_to "編集する",customer_edit_path, class: "btn btn-success" %></p>
+
+<!--% @customer.each do |customer| %-->
+<div>
+  <p>氏名:<%= @customer.last_name %><%= @customer.first_name %></p>
+  <p>フリガナ:<%= @customer.last_name_kana %><%= @customer.first_name_kana %></p>
+  <p>郵便番号：<%= @customer.post_code %></p>
+  <p>住所：<%= @customer.address %></p>
+  <p>電話番号：<%= @customer.phone_number %></p>
+  <p>メールアドレス：<%= @customer.email %></p>
+<!--% end %-->
+</div>
+
+
+<h4>配送先</h4><%= link_to"一覧を見る", addresses_path,class: "btn btn-primary" %>
+<h4>注文履歴</h4><!--注文履歴一覧リンク-->
