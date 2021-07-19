@@ -23,4 +23,3 @@ Rails.application.routes.draw do
 
 
 end
-#ルーティング問題
