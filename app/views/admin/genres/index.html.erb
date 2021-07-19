@@ -1,14 +1,16 @@
 <h3>ジャンル一覧・追加</h3>
   <%= form_with model:@genre, :url => {:action => :create} do |f| %>
-    <p>ジャンル名</p>
-    <%= f.text_field :name %>
-    <%= f.submit '新規登録' %>
-  <% end %>
+    <p>ジャンル名
+      <%= f.text_field :name %>
+        <%= f.submit '新規登録' %>
+      <% end %>
+    </p>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-light">
     <tr>
       <th>ジャンル</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>

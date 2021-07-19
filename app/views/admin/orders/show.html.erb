@@ -1,0 +1,46 @@
+<h3>注文履歴詳細画面</h3>
+<div class="order-body">
+  <p>購入者
+    <%= link_to admin_order_path(order.id) do %>
+      <%= @order.name %> <!--会員詳細にとぶ-->
+    <% end %>
+  </p>
+  <p>注文日 <%= @order.created_at.strftime('%Y/%m/%d') %></p>
+  <p>配送先 <%= @order.adress %><%= @order.name %></p>
+  <p>支払方法 <%= @order.payment_method %></p>
+  <p>注文ステータス
+    <%= form_with(model: @order, url: admins_order_path(@order), local: true) do |f| %>
+        <%= f.select :status, Order.statuses.keys, {prompt: false} %>
+        <%= f.submit "更新" %>
+    <% end %>
+  </p>
+</div>
+<div class="order_details">
+  <table>
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>制作ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order_details.each do |item| %>
+        <tr>
+          <td><%= item.id %></td> <!--注文商品名-->
+          <td><%= item.name %></td> <!--単価(税込)3桁区切り--><%= converting_to_jpy(item.price) %>
+          <td><%= item.amount %></td>
+          <td><%= item.genre.name %></td> <!--小計-->
+          <td><!--制作ステータス-->
+            <%= form_with(model: @order_details, url: admins_order_path(@order_details), local: true) do |f| %>
+              <%= f.select :status, Order_details.statuses.keys, {prompt: false} %>
+              <%= f.submit "更新" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
