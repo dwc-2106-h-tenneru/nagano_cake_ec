@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :genre
+  belongs_to :cart_item
   attachment :image
   
   # 税込価格を計算する
