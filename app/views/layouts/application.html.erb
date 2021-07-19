@@ -10,24 +10,28 @@
   </head>
 
   <body>
-    <% if customer_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-      </li>
-      <li>
-      <%= link_to 'マイページ', customer_path %>
-      </li>
-    <% else %>
-      <li>
-      <%= link_to 'About', about_path %>
-      </li>
-      <li>
-        <%= link_to "新規登録", new_customer_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_customer_session_path %>
-      </li>
-    <% end %>
+    <div class="container">
+      <a class="navbar-brand" href="/">Logo</a>
+        <% if customer_signed_in? %>
+          <p>ようこそ、<%= @customer.last_name %>さん！</p>
+          <li>
+          <%= link_to 'マイページ', customer_path %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li>
+          <%= link_to 'About', about_path %>
+          </li>
+          <li>
+            <%= link_to "新規登録", new_customer_registration_path %>
+          </li>
+          <li>
+            <%= link_to "ログイン", new_customer_session_path %>
+          </li>
+        <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
