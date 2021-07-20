@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
   devise_for :admins
+<<<<<<< HEAD
   devise_for :customers
   
+=======
+  devise_for :customers, controllers: {
+  sessions:      'customers/sessions',
+  passwords:     'customers/passwords',
+  registrations: 'customers/registrations'
+}
+
+
+>>>>>>> origin/develop
   root to: 'homes#top'
   get 'about' => 'homes#about'
   get 'customer/edit' => 'customers#edit'
