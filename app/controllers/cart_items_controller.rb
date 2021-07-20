@@ -1,8 +1,12 @@
 class CartItemsController < ApplicationController
+  # before_action :authenticate_user!
+
   def index
+    # @item = Item.find(params[:id])
     @customer = Customer.find(1)
     @cart_item = CartItem.where(customer_id: current_customer.id)
     @cart_items = CartItem.all
+    # @subtotal　= cart_item.item.price * @cart_item.amount
     # @item =
     # @amount = Item.amount
   end
@@ -10,7 +14,7 @@ class CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    @cart_items = current_user.cart_items.all
+    # @cart_items = current_user.cart_items.all
     if @cart_item.save
       redirect_to cart_items_path
     else
@@ -35,7 +39,11 @@ class CartItemsController < ApplicationController
   end
 
   def update
+    # @cart_item = CartItem.where(customer_id: current_customer.id)
     @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
+    # @cart_item.update(amount: params[:amount].to_i)
+    redirect_to cart_items_path
   end
 
 

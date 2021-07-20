@@ -28,10 +28,5 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
   end
 
-<<<<<<< HEAD
-end
-=======
-
 
 end
->>>>>>> origin/develop
