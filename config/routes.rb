@@ -1,16 +1,11 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
 
-  devise_for :customers
-  devise_for :admins
-=======
   devise_for :admins
   devise_for :customers, controllers: {
   sessions:      'customers/sessions',
   passwords:     'customers/passwords',
   registrations: 'customers/registrations'
 }
->>>>>>> origin/develop
 
 
   root to: 'homes#top'
