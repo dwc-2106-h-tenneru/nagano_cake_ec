@@ -1,6 +1,7 @@
 class Admin::ItemsController < ApplicationController
 
   def new
+    @customer = current_customer
     @item = Item.new
   end
 
@@ -12,14 +13,17 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @customer = current_customer
     @item = Item.find(params[:id])
   end
 
   def index
+    @customer = current_customer
     @items = Item.order(id: :desc).page(params[:page]).reverse_order
   end
 
   def edit
+    @customer = current_customer
     @item = Item.find(params[:id])
   end
 

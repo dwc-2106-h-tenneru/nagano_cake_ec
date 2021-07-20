@@ -1,16 +1,26 @@
-<h3>商品詳細</h3>
-<div class="item-body">
-  <%= attachment_image_tag @item, :image %>
-  <p>商品名 <%= @item.name %></p>
-  <p>商品説明 <%= @item.introduction %></p>
-  <p>ジャンル <%= @item.genre.name %></p>
-  <p>税込価格(税抜価格) <%= @item.add_tax_price.to_s(:delimited) %> (<%= @item.price.to_s(:delimited) %>)円</p>
-  <p>販売ステータス 
-    <% if @item.is_active == true %>
-      <font color="green">販売中</font>
-    <% elsif @item.is_active == false %>
-      <font color="silver">販売停止中</font>
-  <%  end %>
-  </p>
-  <%= link_to "編集する", edit_admin_item_path(@item) %>
+<p class="h3">商品詳細</p>
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-2">
+      <%= attachment_image_tag @item, :image, :fill, 100, 100, fallback: "noimage.jpg" %>
+    </div>
+    <div class="col-10">
+      <p>商品名 <%= @item.name %></p>
+      <p>商品説明 <%= @item.introduction %></p>
+      <p>ジャンル <%= @item.genre.name %></p>
+      <p>
+        税込価格(税抜価格) <%= @item.add_tax_price.to_s(:delimited) %> (<%= @item.price.to_s(:delimited) %>)円
+      </p>
+      <p>販売ステータス
+        <% if @item.is_active == true %>
+          <font color="green">販売中</font>
+        <% elsif @item.is_active == false %>
+          <font color="silver">販売停止中</font>
+        <% end %>
+      </p>
+      <p>
+        <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success" %>
+      </p>
+    </div>
+  </div>
 </div>

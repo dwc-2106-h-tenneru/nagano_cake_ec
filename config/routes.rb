@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   passwords:     'customers/passwords',
   registrations: 'customers/registrations'
 }
+
+
   root to: 'homes#top'
   get 'about' => 'homes#about'
   get 'customer/edit' => 'customers#edit'
