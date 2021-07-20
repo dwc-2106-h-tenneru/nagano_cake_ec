@@ -1,0 +1,32 @@
+<%# provide(:title, '会員一覧') %>
+  <table class="table table-hover table-bordered table-condensed">
+    <h1>会員一覧</h1>
+    <thead>
+      <tr class="info">
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+
+      <tbody>
+        <% @customers.each do |customer| %>
+          <tr>
+      <td class="info col-xs-1">
+      <%= customer.id %>
+      </td>
+      <td class="text-left">
+      <%= link_to admin_customer_path(customer), class: "btn-link"  do %>
+      <i class="far fa-user"></i>
+      <%= full_name(customer) %>
+      <% end %>
+      </td>
+      <% end %>
+      
+      <% if customer.is_valid == true%>
+      <p><i class="fas fa-bullseye blue"></i>退会済</p>
+      <% else %>
+      <p><i class="fas fa-bullseye red"></i>有効</p>
+      <% end %>
+      </thead>
+</table>

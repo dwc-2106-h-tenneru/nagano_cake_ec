@@ -4,6 +4,6 @@ class HomesController < ApplicationController
   end
 
   def about
-    @customer = Customer.find()
+    @customer = Customer.find(1)
   end
 end
