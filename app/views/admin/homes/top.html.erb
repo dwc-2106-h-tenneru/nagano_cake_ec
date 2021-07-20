@@ -1,6 +1,6 @@
 <h3>注文履歴一覧</h3>
- <table>
-  <thead>
+ <table class="table">
+  <thead class="thead-light">
     <tr>
       <th>購入日時</th>
       <th>購入者</th>
@@ -17,14 +17,8 @@
         <% end %>
       </td>
       <td><%= order.name %></td>
-      <td><%= order.個数 %> </td>
-      <td>
-        <% if item.is_active == true %>
-          <font color="green">販売中</font>
-        <% elsif item.is_active == false %>
-          <font color="silver">販売停止中</font>
-        <%  end %>
-      </td>
+      <td><%= order.amount %> </td>
+      <td><%= order.status %></td>
     </tr>
     <% end %>
   </tbody>

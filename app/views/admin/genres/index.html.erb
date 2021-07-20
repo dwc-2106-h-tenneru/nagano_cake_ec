@@ -1,4 +1,5 @@
 <h3>ジャンル一覧・追加</h3>
+
   <%= form_with model:@genre, :url => {:action => :create} do |f| %>
     <p>ジャンル名
       <%= f.text_field :name %>

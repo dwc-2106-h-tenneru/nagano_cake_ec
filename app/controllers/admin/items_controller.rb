@@ -8,6 +8,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @item.save
     redirect_to admin_items_path
+    flash[:success] = "商品を登録しました"
   end
 
   def show
