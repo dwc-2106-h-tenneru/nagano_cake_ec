@@ -16,24 +16,5 @@
   
   </div>
   </body>
-  
-    <h2>Sign up</h2>
-    
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
-    
-    <%= form_with model: @admin, url:new_admin_session, id: 'new_adimn', class: 'new_user', local: true do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  
-      <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "ログイン", admin_session_path %>
-      </li>
-    <% end %>
 </html>

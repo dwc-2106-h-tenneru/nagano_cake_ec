@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :customers
-
- 
-  
-
+  devise_for :admins, controllers: {
+  sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
+}
 
   root to: 'homes#top'
   get 'about' => 'homes#about'
@@ -22,49 +23,6 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :show, :index, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
   end
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    devise_for :admins
-    #root to: 'admins/sessions#new'
-    get '/admins/sign_in'=> 'admins/sessions#new'
-    post '/admins/sign_in' => 'admins/sessions#create'
-    #delete '/admins/sign_out' => 'admins/sessions#destroy'
-
-
-
 
 end
 #ルーティング問題
