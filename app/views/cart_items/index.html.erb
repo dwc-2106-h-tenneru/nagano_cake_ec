@@ -1,8 +1,35 @@
 <h2>ショッピングカート</h2>
 カートを空にする
-<table>注文商品のテーブル作る
-<% @cart_items.each do |cart_item| %>
-<%= cart_item.item.name %>
+<table class="table table-hover table-inverse">
+ <thead>
+  <tr>
+      <th>商品名</th>
+      <th>単価</th>
+      <th>数量</th>
+      <th>id</th>
+      <th></th>
+  </tr>
+ </thead>
+ <tbody>
+  <% @cart_item.each do |cart_item| %>
+  <tr>
+   <td><%= cart_item.item.name %></td>
+   <td><%= cart_item.item.price %></td>
+   <td>
+    <%= form_with model: @cart_item ,url: cart_items_path, method: :post, local: true do |f| %>
+    <%= f.select :amount, [[1], [2], [3], [4],[5]], include_blank: amount %>
+    <%= link_to "変更", cart_items_path(@cart_item), method: :update, data: class:"btn btn-danger" %>
+    <% end %>
+    </td>
+   <td><%= cart_item.id %></td>
+   <td><%= link_to "Destroy", cart_items_path(@cart_item), method: :destroy, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger" %></td>
+   </tr>
+  </tbody>
+ <% end %>
 </table>
 <%= link_to "買い物を続ける", items_path,class:"btn btn-success" %>
-<%= link_to "情報入力を続ける", new_oder_path,class:"btn btn-success" %>
+<div></div>
+<%= form_with model: @order ,url: new_oder_path, method: :post, local: true do |f| %>
+<%#= f.hidden_field :cart_item_id, value: @cart_item.id %>
+ <%= f.submit "情報入力を続ける",class:"btn btn-success" %>
+<% end %>

@@ -8,10 +8,9 @@
   <p><%= @item.name %></p>
   <p><%= @item.introduction %></p>
   <p>￥<%= @item.add_tax_price.to_s(:delimited) %> (税込) </p>
-<%= form_with(url:cart_items_path , method: :post, local: true) do |f| %>
-  <%#= form_with model: cart_item, :url => {:action => :create} do |f| %>
-  <%#= form_with model: @cart_item, url: "/cart_items/#{@cart_item.id}",local:true do |f| %>
 
+<%= form_with model: @cart_item ,url: cart_items_path, method: :post, local: true do |f| %>
+  <%= f.hidden_field :item_id, value: @item.id %>
   <%= f.select :amount, [[1], [2], [3], [4],[5]], include_blank: "個数選択" %>
   <%= f.submit "カートに入れる",class:"btn btn-success" %>
   <% end %>
