@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   registrations: 'customers/registrations'
 }
 
-
   root to: 'homes#top'
   get 'about' => 'homes#about'
   get 'customer/edit' => 'customers#edit'
@@ -23,7 +22,5 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :show, :index, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
   end
-
-
 
 end
