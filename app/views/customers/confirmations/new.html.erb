@@ -1,7 +1,15 @@
 <h2>Resend confirmation instructions</h2>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+<<<<<<< HEAD
   <%= render "customers/shared/error_messages", resource: resource %>
+=======
+<<<<<<< HEAD:app/views/admins/confirmations/new.html.erb
+  <%= render "admins/shared/error_messages", resource: resource %>
+=======
+  <%= render "customers/shared/error_messages", resource: resource %>
+>>>>>>> origin/develop:app/views/customers/confirmations/new.html.erb
+>>>>>>> origin/develop
 
   <div class="field">
     <%= f.label :email %><br />
@@ -13,4 +21,12 @@
   </div>
 <% end %>
 
+<<<<<<< HEAD
 <%= render "customers/shared/links" %>
+=======
+<<<<<<< HEAD:app/views/admins/confirmations/new.html.erb
+<%= render "admins/shared/links" %>
+=======
+<%= render "customers/shared/links" %>
+>>>>>>> origin/develop:app/views/customers/confirmations/new.html.erb
+>>>>>>> origin/develop
