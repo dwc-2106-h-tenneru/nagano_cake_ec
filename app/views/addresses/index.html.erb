@@ -3,13 +3,14 @@
 <%= render 'addresses/new', address: @address %>
 
 <table class="table table-bordered">
-  <% @addresses.each do |address| %>
+  
     <tr>
       <th>郵便番号</th>
       <th>住所</th>
       <th>宛名</th>
       <th colspan="3"></th>
     </tr>
+  <% @addresses.each do |address| %>
     <tr>
       <td><%= address.post_code%></td>
       <td><%=address.address%></td>
