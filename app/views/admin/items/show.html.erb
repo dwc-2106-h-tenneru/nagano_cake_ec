@@ -1,26 +1,41 @@
-<p class="h3">商品詳細</p>
 <div class="container">
-  <div class="row align-items-center">
-    <div class="col-2">
-      <%= attachment_image_tag @item, :image, :fill, 100, 100, fallback: "noimage.jpg" %>
-    </div>
-    <div class="col-10">
-      <p>商品名 <%= @item.name %></p>
-      <p>商品説明 <%= @item.introduction %></p>
-      <p>ジャンル <%= @item.genre.name %></p>
-      <p>
-        税込価格(税抜価格) <%= @item.add_tax_price.to_s(:delimited) %> (<%= @item.price.to_s(:delimited) %>)円
-      </p>
-      <p>販売ステータス
-        <% if @item.is_active == true %>
-          <font color="green">販売中</font>
-        <% elsif @item.is_active == false %>
-          <font color="silver">販売停止中</font>
-        <% end %>
-      </p>
-      <p>
-        <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success" %>
-      </p>
-    </div>
+  <h3><span style="background-color:#EEEEEE">商品詳細</span></h3>
+    <div class="row align-items-center">
+      <div class="col-3 col-xs-offset-2">
+        <%= attachment_image_tag @item, :image, :fill, 100, 100, fallback: "noimage.jpg" %>
+      </div>
+      <div class="col-5">
+        <table class="table table-borderless">
+          <tr>
+            <th>商品名</th>
+            <th><%= @item.name %></th>
+          </tr>
+          <tr>
+            <th>商品説明</th>
+            <th><%= @item.introduction %></th>
+          </tr>
+          <tr>
+            <th>商品説明</th>
+            <th><%= @item.genre.name %></th>
+          </tr>
+          <tr>
+            <th>税込価格(税抜価格)</th>
+            <th><%= @item.add_tax_price.to_s(:delimited) %> (<%= @item.price.to_s(:delimited) %>)円</th>
+          </tr>
+          <tr>
+            <th>販売ステータス</th>
+            <th>
+              <% if @item.is_active == true %>
+                <font color="green">販売中</font>
+              <% elsif @item.is_active == false %>
+                <font color="silver">販売停止中</font>
+              <% end %>
+            </th>
+          </tr>
+        </table>
+        <p>
+          <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success" %>
+        </p>
+      </div>
   </div>
 </div>

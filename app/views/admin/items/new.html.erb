@@ -1,7 +1,7 @@
 <dev class="container">
   <div class="row">
     <div class='mx-auto'>
-      <h3>商品新規登録</h3>
+      <h3><span style="background-color:#EEEEEE">商品新規登録</span></h3>
         <%= form_with model:@item, :url => {:action => :create} do |f| %>
           <%= render 'items_form', f: f %>
           <%= f.submit '新規登録', class: "btn btn-success" %>

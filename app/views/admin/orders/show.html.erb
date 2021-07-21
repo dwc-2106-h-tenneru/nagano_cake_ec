@@ -4,23 +4,37 @@
     <%= flash[:success] %>
   </div>
 <% end %>
-<h3>注文履歴詳細画面</h3>
-  <div class="order-body">
-    <p>購入者
-      <%= link_to admin_customers_path(@customer.id) do %>
-        <%= @customer.name %> <!--会員詳細にとぶ-->
-      <% end %>
-    </p>
-    <p>注文日 <%= @order.created_at.strftime('%Y/%m/%d') %></p>
-    <p>配送先 <%= @order.adress %><%= @order.name %></p>
-    <p>支払方法 <%= @order.payment_method %></p>
-    <p>注文ステータス
-      <%= form_with(model: @order, url: admins_order_path(@order), local: true) do |f| %>
-        <%= f.select :status, Order.statuses.keys, {prompt: false} %>
-        <%= f.submit "更新" %>
-      <% end %>
-    </p>
-  </div>
+<h3><span style="background-color:#EEEEEE">注文履歴詳細画面</span></h3>
+    <table class="table table-borderless">
+      <tr>
+        <th>購入者</th>
+        <th><%= link_to admin_customers_path(@customer.id) do %>
+              <%= @customer.name %> <!--会員詳細にとぶ-->
+            <% end %></th>
+        </tr>
+      <tr>
+        <th>注文日</th>
+        <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
+      </tr>
+      <tr>
+        <th>配送先</th>
+        <th><%= @order.adress %><br>
+            <%= @order.name %>
+        </th>
+      </tr>
+      <tr>
+        <th>支払方法</th>
+        <th><%= @order.payment_method %></th>
+      </tr>
+      <tr>
+        <th>注文ステータス</th>
+        <th><%= form_with(model: @order, url: admins_order_path(@order), local: true) do |f| %>
+              <%= f.select :status, Order.statuses.keys, {prompt: false} %>
+              <%= f.submit "更新" %>
+            <% end %>
+        </th>
+      </tr>
+    </table>
   <div class="order_details">
     <table class="table">
       <thead class="thead-light">
@@ -49,4 +63,22 @@
         <% end %>
       </tbody>
     </table>
+  </div>
+  <div class="price">
+    <table class='table'>
+      <tr>
+	      <th>商品合計</th>
+	      <th><%= @order_details.price %></th>
+      </tr>
+      <tr>
+	      <th>送料</th>
+	      <th><%= @order.shipping_cost %></th>
+      </tr>
+      <tr>
+	      <th>請求金額合計</th>
+	      <th><%= @order.total_price %></th>
+      </tr>
+    </table>
+    <!--ステータス確認のため設置、あとで消す-->
+    <%= link_to "topに戻る", admin_root_path, class: "btn btn-dark" %>
   </div>
