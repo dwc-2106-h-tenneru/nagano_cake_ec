@@ -6,7 +6,7 @@ class CartItemsController < ApplicationController
     @customer = Customer.find(1)
     @cart_item = CartItem.where(customer_id: current_customer.id)
     @cart_items = CartItem.all
-    # @subtotal　= cart_item.item.price * @cart_item.amount
+    # @subtotal　= cart_item.item.price * cart_item.amount
     # @item =
     # @amount = Item.amount
   end
