@@ -1,45 +1,55 @@
-<h2>プロフィール編集</h2>
-<%= form_with model:@customer, :url => {:action => :update}, local:true do |f| %>
-   <div class="namae">
-    名前
-    <div class="field">
-      <%= f.label "(姓)" %><br />
-      <%= f.text_field :last_name, autofocus: true, autocomplete: "令和" %>
+<div class="container">
+  <h2>会員情報編集</h2>
+  <%= form_with model:@customer, :url => {:action => :update}, local:true do |f| %>
+    <div class="row">
+      <div class="col-3">名前</div>
+      <div class="form-group col-4">
+        <%= f.label "(姓)",for: "inputEmail4", class: "form-label" %><br />
+        <%= f.text_field :last_name, autofocus: true, placeholder: "令和",class: "form-control" %>
+      </div>
+
+      <div class="form-group col-4">
+        <%= f.label "(名)" %><br />
+        <%= f.text_field :first_name, autofocus: true, placeholder: "道子",class: "form-control" %>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label "(名)" %><br />
-      <%= f.text_field :first_name, autofocus: true, autocomplete: "道子" %>
+    <div class="row">
+      <div class="col-3">フリガナ</div>
+      <div class="form-group col-4">
+        <%= f.label "(セイ)" %><br />
+        <%= f.text_field :last_name_kana, autofocus: true, placeholder: "レイワ",class: "form-control" %>
+      </div>
+
+      <div class="form-group col-4">
+        <%= f.label "(メイ)" %><br />
+        <%= f.text_field :first_name_kana, autofocus: true, placeholder: "ミチコ",class: "form-control" %>
+      </div>
     </div>
-  </div>
 
-  <div class="namae">
-    フリガナ
-    <div class="field">
-      <%= f.label "(セイ)" %><br />
-      <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "レイワ" %>
+    <div class="row">
+      <div class="col-3">郵便番号(ハイフンなし)</div>
+      <div class="form-group col-4"><%= f.text_field :post_code, autofocus: true, placeholder: "0000000",class: "form-control" %></div>
     </div>
 
-    <div class="field">
-      <%= f.label "(メイ)" %><br />
-      <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "ミチコ" %>
+    <div class="row">
+      <div class="col-3">住所</div>
+      <div class="form-group col-8"><%= f.text_field :address, autofocus: true, placeholder: "東京都渋谷区代々木神園町0-0",class: "form-control" %></div>
     </div>
-  </div>
-  <div class="field">
-    <%= f.label "メール" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "sample@example.com" %>
-  </div>
 
-  <div class="field">
-    <%= f.label "郵便番号(ハイフンなし)" %><br />
-    <%= f.text_field :post_code, autofocus: true, autocomplete: "0000000" %>
-  </div>
+    <div class="row">
+      <div class="col-3">電話番号(ハイフンなし)</div>
+      <div class="form-group col-4"><%= f.text_field :phone_number, autofocus: true, placeholder: "00000000000",class: "form-control" %></div>
+    </div>
 
-  <div class="field">
-    <%= f.label "住所" %><br />
-    <%= f.text_field :address, autofocus: true, autocomplete: "東京都渋谷区代々木神園町0-0" %>
-  </div>
+    <div class="row">
+      <div class="col-3">メール</div>
+      <div class="form-group col-4"><%= f.email_field :email, autofocus: true, placeholder: "sample@example.com",class: "form-control" %></div>
+    </div>
 
-  <%= f.submit "編集内容を保存",class: "btn btn-success" %>
-  <%= link_to "退会する",confirm_unsubscribe_path,class: "btn btn-danger" %>
+    <div class="row">
+      <div class="col-md-3 offset-md-3"><%= f.submit "編集内容を保存",class: "btn btn-success" %></div>
+      <div class="col-md-3 offset-md-3"><%= link_to "退会する",confirm_unsubscribe_path,class: "btn btn-danger" %></div>
+    </div>
 <% end %>
+</div>

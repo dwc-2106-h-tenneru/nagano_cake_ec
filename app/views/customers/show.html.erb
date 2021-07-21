@@ -1,36 +1,44 @@
-<h2>マイページ</h2>
+<div class="container">
+  <h2>マイページ</h2>
 
-<h4>登録情報</h4> <p><%= link_to "編集する",customer_edit_path, class: "btn btn-success" %></p>
+  <div class="row">
+    <h5 class="col-2">登録情報</h5> <div class="col-2"><%= link_to "編集する",customer_edit_path, class: "btn btn-success" %></div>
+  </div></br>
 
+  <table class="table table-bordered">
+    <tr>
+      <th class="table-active col-2">氏名</th>
+      <td class="col-8"><%= @customer.last_name %><%= @customer.first_name %></td>
+    </tr>
+    <tr>
+      <th class="table-active col-2">フリガナ</th>
+      <td class="col-8"><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+    </tr>
+    <tr>
+      <th class="table-active col-2">郵便番号</th>
+      <td class="col-8"><%= @customer.post_code %></td>
+    </tr>
+    <tr>
+      <th class="table-active col-2">住所</th>
+      <td class="col-8"><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <th class="table-active col-2">電話番号</th>
+      <td class="col-8"><%= @customer.phone_number %></td>
+    </tr>
+    <tr>
+      <th class="table-active col-2">メールアドレス</th>
+      <td class="col-8"><%= @customer.email %></td>
+    </tr>
 
-<table class="table table-bordered">
-  <tr>
-    <td>氏名</td>
-    <td><%= @customer.last_name %><%= @customer.first_name %></td>
-  </tr>
-  <tr>
-    <td>フリガナ</td>
-    <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
-  </tr>
-  <tr>
-    <td>郵便番号</td>
-    <td><%= @customer.post_code %></td>
-  </tr>
-  <tr>
-    <td>住所</td>
-    <td><%= @customer.address %></td>
-  </tr>
-  <tr>
-    <td>電話番号</td>
-    <td><%= @customer.phone_number %></td>
-  </tr>
-  <tr>
-    <td>メールアドレス</td>
-    <td><%= @customer.email %></td>
-  </tr>
+  </table></br>
 
-</table>
-
-
-<h5>配送先<%= link_to"一覧を見る", addresses_path,class: "btn btn-primary" %></h5>
-<h4>注文履歴</h4><!--注文履歴一覧リンク-->
+  <div class="row">
+    <h5 class="col-2">配送先</h5>
+    <div class="col-2"><%= link_to"一覧を見る", addresses_path,class: "btn btn-primary" %></div>
+  </div></br>
+  <div class="row">
+    <h5 class="col-2">注文履歴</h5>
+    <!--div class="col-4"><!%= link_to"一覧を見る", 注文履歴_path,class: "btn btn-primary" %></div-->
+  </div>
+</div>
