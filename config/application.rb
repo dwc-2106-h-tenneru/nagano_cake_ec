@@ -21,5 +21,5 @@ module NaganoCake
     # 日本時間にする為下記追記
     config.time_zone = 'Tokyo'
   end
-  
+
 end
