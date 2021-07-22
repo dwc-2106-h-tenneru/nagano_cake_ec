@@ -1,6 +1,4 @@
 class OrdersController < ApplicationController
-<<<<<<< HEAD
-=======
   def new
     @customer = Customer.find(1)
     @order = Order.new
@@ -79,5 +77,4 @@ class OrdersController < ApplicationController
     params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
 
->>>>>>> origin/develop
 end
