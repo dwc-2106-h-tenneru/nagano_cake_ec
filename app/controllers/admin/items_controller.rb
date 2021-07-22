@@ -2,6 +2,7 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @customer = Customer.find(1)
   end
 
   def create
@@ -12,14 +13,17 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @customer = Customer.find(1)
   end
 
   def index
     @items = Item.order(id: :desc).page(params[:page]).reverse_order
+    @customer = Customer.find(1)
   end
 
   def edit
     @item = Item.find(params[:id])
+    @customer = Customer.find(1)
   end
 
   def update

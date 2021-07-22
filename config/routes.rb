@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   registrations: 'customers/registrations'
 }
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
   resources :items, only: [:index, :show]
    resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
   resources :orders, only: [:index, :create, :destroy, :update, :new]
+
 
   root to: 'homes#top'
   get 'about' => 'homes#about'
@@ -37,8 +38,11 @@ Rails.application.routes.draw do
     resources :customers, only:[:index, :show, :edit, :update]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   end
 
+=======
+>>>>>>> origin/develop
 =======
 >>>>>>> origin/develop
 end

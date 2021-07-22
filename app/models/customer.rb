@@ -4,8 +4,12 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 <<<<<<< HEAD
+<<<<<<< HEAD
    has_many :addre, dependent: :destroy
 
+=======
+   has_many :addresses, dependent: :destroy
+>>>>>>> origin/develop
 end
 =======
 
