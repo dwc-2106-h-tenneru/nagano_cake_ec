@@ -2,6 +2,7 @@ class Admin::GenresController < ApplicationController
   def index
     @genre = Genre.new
     @genres = Genre.all
+    @customer = Customer.find(1)
   end
 
   def create
@@ -16,6 +17,7 @@ class Admin::GenresController < ApplicationController
 
   def edit
     @genre = Genre.find(params[:id])
+    @customer = Customer.find(1)
   end
 
   def update

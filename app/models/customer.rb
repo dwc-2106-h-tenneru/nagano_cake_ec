@@ -5,6 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
    has_many :addre, dependent: :destroy
 
 =======
@@ -12,9 +13,10 @@ class Customer < ApplicationRecord
 >>>>>>> origin/develop
 end
 =======
+=======
+>>>>>>> origin/develop
 
   has_many :addresses, dependent: :destroy
   has_many :cart_items
   has_many :orders
 end
->>>>>>> origin/develop
