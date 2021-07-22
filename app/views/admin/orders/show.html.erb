@@ -4,13 +4,15 @@
     <%= flash[:success] %>
   </div>
 <% end %>
-<h3><span style="background-color:#EEEEEE">注文履歴詳細画面</span></h3>
+<h3><span style="background-color:#EEEEEE">注文履歴詳細</span></h3>
     <table class="table table-borderless">
       <tr>
         <th>購入者</th>
-        <th><%= link_to admin_customers_path(@customer.id) do %>
-              <%= @customer.name %> <!--会員詳細にとぶ-->
-            <% end %></th>
+        <th><%= @order.name %><!--会員詳細にとぶ-->
+            <!--%= link_to admin_custmer_path(customer.id) do %>-->
+            <!--  %= @order.name %>-->
+            <!--% end %>-->
+        </th>
         </tr>
       <tr>
         <th>注文日</th>
@@ -18,17 +20,21 @@
       </tr>
       <tr>
         <th>配送先</th>
-        <th><%= @order.adress %><br>
+        <th><%= @order.address %><br>
             <%= @order.name %>
         </th>
       </tr>
       <tr>
         <th>支払方法</th>
-        <th><%= @order.payment_method %></th>
+        <th><% if @order.payment_method == 0 %>クレジットカード
+            <% elsif %>
+                <font color="silver">銀行振込</font>
+            <%  end %>
+        </th>
       </tr>
       <tr>
         <th>注文ステータス</th>
-        <th><%= form_with(model: @order, url: admins_order_path(@order), local: true) do |f| %>
+        <th><%= form_with(model: @order, url: admin_order_path(@order), local: true) do |f| %>
               <%= f.select :status, Order.statuses.keys, {prompt: false} %>
               <%= f.submit "更新" %>
             <% end %>
@@ -47,28 +53,27 @@
         </tr>
       </thead>
       <tbody>
-        <% @order_details.each do |order_details| %>
+        <% @order_details.each do |order_detail| %>
           <tr>
-            <td><%= @order_details.item.name %></td> <!--注文商品名-->
+            <td><%= @order_detail.item.name %></td> <!--注文商品名-->
             <td><%= @item.add_tax_price.to_s(:delimited) %></td> <!--単価(税込)3桁区切り-->
-            <td><%= @order_details.amount %></td>
-            <td><%= converting_to_jpy(@order_details.price) %></td> <!--小計-->
+            <td><%= @order_detail.amount %></td>
+            <td><%= converting_to_jpy(@order_detail.price) %></td> <!--小計-->
             <td><!--制作ステータス-->
-              <%= form_with(model: @order_details, url: admins_order_details_path(@order_details), local: true) do |f| %>
-                <%= f.select :status, OrderDetails.statuses.keys, {prompt: false} %>
+              <%= form_with(model: @order_detail, url: admin_order_detail_path(@order_detail), local: true) do |f| %>
+                <%= f.select :status, OrderDetail.statuses.keys, {prompt: false} %>
                 <%= f.submit "更新" %>
               <% end %>
             </td>
           </tr>
         <% end %>
-      </tbody>
     </table>
   </div>
   <div class="price">
     <table class='table'>
       <tr>
 	      <th>商品合計</th>
-	      <th><%= @order_details.price %></th>
+	      <!--<th>%= @order_details.price %></th>-->
       </tr>
       <tr>
 	      <th>送料</th>
@@ -76,7 +81,7 @@
       </tr>
       <tr>
 	      <th>請求金額合計</th>
-	      <th><%= @order.total_price %></th>
+	      <th><%= converting_to_jpy(@order.total_price) %></th>
       </tr>
     </table>
     <!--ステータス確認のため設置、あとで消す-->
