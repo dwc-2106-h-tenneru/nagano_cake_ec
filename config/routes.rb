@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   registrations: 'customers/registrations'
 }
 
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :items, only: [:index, :show]
+   resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
+  resources :orders, only: [:index, :create, :destroy, :update, :new]
 
   root to: 'homes#top'
   get 'about' => 'homes#about'
@@ -16,6 +20,13 @@ Rails.application.routes.draw do
   get 'customer/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
   patch 'customer/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
   put 'customer/withdraw' => 'customers#withdraw'
+<<<<<<< HEAD
+=======
+  post 'orders/confirm' => 'orders#confirm'
+  get 'orders/confirms' => 'orders#confirms'
+  get 'orders/complete' => 'orders#complete'
+
+>>>>>>> origin/develop
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
 
@@ -25,6 +36,9 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only:[:index, :show, :edit, :update]
 
+<<<<<<< HEAD
   end
 
+=======
+>>>>>>> origin/develop
 end
