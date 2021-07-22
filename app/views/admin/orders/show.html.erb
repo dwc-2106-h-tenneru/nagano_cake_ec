@@ -8,7 +8,7 @@
     <table class="table table-borderless">
       <tr>
         <th>購入者</th>
-        <th><%= @order.name %><!--会員詳細にとぶ-->
+        <th><%= @customer.last_name %><%= @customer.first_name %><!--会員詳細にとぶ-->
             <!--%= link_to admin_custmer_path(customer.id) do %>-->
             <!--  %= @order.name %>-->
             <!--% end %>-->
@@ -20,7 +20,7 @@
       </tr>
       <tr>
         <th>配送先</th>
-        <th><%= @order.address %><br>
+        <th>〒<%= @order.post_code.to_s.insert(3, "-") %> <%= @order.address %><br>
             <%= @order.name %>
         </th>
       </tr>
