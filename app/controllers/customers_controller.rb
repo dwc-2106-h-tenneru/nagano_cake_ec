@@ -17,6 +17,7 @@ class CustomersController < ApplicationController
     @customer = Customer.find(1)
   end
 
+
   def withdraw
     @customer = Customer.find(1)
     @customer.update(is_deleted: false)

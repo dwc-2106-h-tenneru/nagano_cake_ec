@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h3>ジャンル枠</h3>
+      </div>
+      <div class="col-md-8 offset-md-1">
+            <div class="col-lg-3">
+              <td>商品画像</td>
+            </div>
+            <div class ="col-lg-5">
+              <%= item.name %>
+              <%= item.introduction %>
+              <%= converting_to_jpy(item.add_tax_price) %>
+            </div>
+        <!--テーブルを４商品横ならびの二行で、ページャ機能つける-->
+      </div>
+    </div>
+  </div>

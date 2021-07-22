@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   registrations: 'customers/registrations'
 }
 
+
+  resources :items, only: [:index, :show]
+   resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
+  resources :orders, only: [:index, :create, :destroy, :update, :new]
+
+
   root to: 'homes#top'
   get 'about' => 'homes#about'
   get 'customer/edit' => 'customers#edit'
@@ -14,6 +20,9 @@ Rails.application.routes.draw do
   get 'customer/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
   patch 'customer/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
   put 'customer/withdraw' => 'customers#withdraw'
+  post 'orders/confirm' => 'orders#confirm'
+  get 'orders/confirms' => 'orders#confirms'
+  get 'orders/complete' => 'orders#complete'
 
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
