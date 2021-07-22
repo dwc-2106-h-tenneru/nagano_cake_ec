@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def new
-    @customer = current_customer
+    @customer = Customer.find(1)
     @order = Order.new
 
   end
@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     # @order = Order.confirm(order_params)
     @cart_items = current_customer.cart_items
-    @customer = current_customer
+    @customer = Customer.find(1)
     @order.payment_method = params[:order][:payment_method]
     if params[:order][:address_option] == "0"
       @order.post_code = current_customer.post_code
@@ -55,11 +55,11 @@ class OrdersController < ApplicationController
   end
 
   def complete
-    @customer = current_customer
+    @customer = Customer.find(1)
   end
 
   def index
-    @customer = current_customer
+    @customer = Customer.find(1)
     @order = Order.find(1)
     @orders = Order.all
     @cart_items = current_customer.cart_items

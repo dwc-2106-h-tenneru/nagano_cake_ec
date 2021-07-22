@@ -4,89 +4,100 @@
     <%= flash[:success] %>
   </div>
 <% end %>
-<h3><span style="background-color:#EEEEEE">注文履歴詳細</span></h3>
-    <table class="table table-borderless">
-      <tr>
-        <th>購入者</th>
-        <th><%= @customer.last_name %><%= @customer.first_name %><!--会員詳細にとぶ-->
-            <!--%= link_to admin_custmer_path(customer.id) do %>-->
-            <!--  %= @order.name %>-->
-            <!--% end %>-->
-        </th>
-        </tr>
-      <tr>
-        <th>注文日</th>
-        <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
-      </tr>
-      <tr>
-        <th>配送先</th>
-        <th>〒<%= @order.post_code.to_s.insert(3, "-") %> <%= @order.address %><br>
-            <%= @order.name %>
-        </th>
-      </tr>
-      <tr>
-        <th>支払方法</th>
-        <th><% if @order.payment_method == 0 %>クレジットカード
-            <% elsif %>
-                <font color="silver">銀行振込</font>
-            <%  end %>
-        </th>
-      </tr>
-      <tr>
-        <th>注文ステータス</th>
-        <th><%= form_with(model: @order, url: admin_order_path(@order), local: true) do |f| %>
-              <%= f.select :status, Order.statuses.keys, {prompt: false} %>
-              <%= f.submit "更新" %>
-            <% end %>
-        </th>
-      </tr>
-    </table>
-  <div class="order_details">
-    <table class="table">
-      <thead class="thead-light">
-        <tr>
-          <th>商品名</th>
-          <th>単価（税込）</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th>制作ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @sum = 0 %>
-        <% @order_details.each do |order_detail| %>
+<dev class="container">
+  <div class="row">
+    <div class="col-md-12"> 
+      <h3><span style="background-color:#EEEEEE">注文履歴詳細</span></h3>
+        <table class="table table-borderless">
           <tr>
-            <td><%= order_detail.item.name %></td> <!--注文商品名-->
-            <td><%= order_detail.price %></td> <!--単価(税込)3桁区切り-->
-            <td><%= order_detail.amount %></td>
-            <td><%= converting_to_jpy(order_detail.price * order_detail.amount) %></td> <!--小計-->
-            <!--%= converting_to_jpy(order_detail.price %-->
-            <td><!--制作ステータス-->
-              <%= form_with(model: order_detail, url: admin_order_detail_path(order_detail), local: true) do |f| %>
-                <%= f.select :making_status, OrderDetail.making_statuses.keys, {prompt: false} %>
-                <%= f.submit "更新" %>
-              <% end %>
-            </td>
+            <th>購入者</th>
+            <th><!--会員詳細にとぶ-->
+                <!--%= link_to admin_custmer_path(@customer.id) do %>-->
+                <%= @customer.last_name %><%= @customer.first_name %>
+                <!--% end %>-->
+            </th>
           </tr>
-          <% @sum += order_detail.price * order_detail.amount %>
-        <% end %>
-    </table>
+          <tr>
+            <th>注文日</th>
+            <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <th>〒<%= @order.post_code.to_s.insert(3, "-") %> <%= @order.address %><br>
+                <%= @order.name %>
+            </th>
+          </tr>
+          <tr>
+            <th>支払方法</th>
+            <th><% if @order.payment_method == 0 %>クレジットカード
+                <% elsif %>
+                  <font color="silver">銀行振込</font>
+                <%  end %>
+            </th>
+          </tr>
+          <tr>
+            <th>注文ステータス</th>
+            <th><%= form_with(model: @order, url: admin_order_path(@order), local: true) do |f| %>
+                  <%= f.select :status, Order.statuses.keys, {prompt: false} %>
+                  <%= f.submit "更新", class: "btn btn-success btn-sm" %>
+                <% end %>
+            </th>
+          </tr>
+        </table>
+    </div>
   </div>
-  <div class="price">
-    <table class='table'>
-      <tr>
-	      <th>商品合計</th>
-	      <th><%= converting_to_jpy(@sum) %>円</th>
-      </tr>
-      <tr>
-	      <th>送料</th>
-	      <th><%= @order.shipping_cost %>円</th>
-      </tr>
-      <tr>
-	      <th>請求金額合計</th>
-	      <th><%= converting_to_jpy(@order.total_price) %>円</th>
-      </tr>
-    </table>
-    <!--ステータス確認のため設置、あとで消す-->
-    <%= link_to "topに戻る", admin_root_path, class: "btn btn-dark" %>
+  <div class="row">
+    <div class="col-md-7"> 
+      <div class="order_details">
+        <table class="table table-borderless">
+          <thead class="thead-light">
+            <tr>
+              <th>商品名</th>
+              <th>単価（税込）</th>
+              <th>数量</th>
+              <th>小計</th>
+              <th>制作ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @sum = 0 %>
+            <% @order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item.name %></td> <!--注文商品名-->
+              <td><%= converting_to_jpy(order_detail.price) %></td> <!--単価(税込)3桁区切り-->
+              <td><%= order_detail.amount %></td>
+              <td><%= converting_to_jpy(order_detail.price * order_detail.amount) %></td> <!--小計-->
+              <td><%= form_with(model: order_detail, url: admin_order_detail_path(order_detail), local: true) do |f| %>
+                    <%= f.select :making_status, OrderDetail.making_statuses.keys, {prompt: false} %>
+                    <%= f.submit "更新", class: "btn btn-info btn-sm" %>
+                  <% end %>
+              </td><!--制作ステータス-->
+            </tr>
+            <% @sum += order_detail.price * order_detail.amount %>
+            <% end %>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-5"> 
+      <div class="price">
+        <table class='table table-borderless'>
+          <tr>
+	          <th>商品合計</th>
+	          <th><%= converting_to_jpy(@sum) %>円</th>
+          </tr>
+          <tr>
+	          <th>送料</th>
+	          <th><%= @order.shipping_cost %>円</th>
+          </tr>
+          <tr>
+	          <th>請求金額合計</th>
+	          <th><%= converting_to_jpy(@order.total_price) %>円</th>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
+</div>
+
+<!--ステータス確認のため設置、あとで消す-->
+<%= link_to "topに戻る", admin_root_path, class: "btn btn-outline-secondary btn-sm" %>

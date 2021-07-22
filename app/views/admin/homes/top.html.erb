@@ -20,13 +20,13 @@
                 <% end %>
               </td>
               <td><%= @customer.last_name %><%= @customer.first_name %></td>
-              <td><%= order.order_details.sum(:amount) %></td> <!--注文商品の合計個数出したい-->
+              <td><%= order.order_details.sum(:amount) %></td>
               <td><%= order.status %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
       <%= paginate @orders %>
-    </dev>
+    </div>
   </div>
 </div>
