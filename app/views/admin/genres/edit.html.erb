@@ -1,6 +1,22 @@
-<h3>ジャンル編集</h3>
-  <%= form_with model:@genre, :url => {:action => :update} do |f| %>
-    <p>ジャンル名</p>
-    <%= f.text_field :name %>
-    <%= f.submit '変更を保存' %>
-  <% end %>
+<dev class="container">
+  <div class="row">
+    <div class="mx-auto col-3">
+      <h3><span style="background-color:#EEEEEE">ジャンル編集</span></h3>
+        <%= form_with model:@genre, :url => {:action => :update} do |f| %>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <%= f.label :ジャンル名 %>
+                <%= f.text_field :name, class: "form-control" %>
+              </div>
+            </div>
+            <div class="col-2 align-self-end">
+              <div class="form-group">
+                <%= f.submit '変更を保存', class: "btn btn-success" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
