@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
 
   resources :items, only: [:index, :show]
-   resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
+  resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
   resources :orders, only: [:index, :create, :destroy, :update, :new]
 
 
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
+    post 'order_details/:id' => 'orders#show'
   end
 
 end

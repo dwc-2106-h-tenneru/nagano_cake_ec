@@ -42,6 +42,16 @@ class OrdersController < ApplicationController
     # @cart_item.customer_id = current_customer.id
     @order.save
     redirect_to orders_complete_path
+    @cart_items = current_customer.cart_items.all
+    @cart_items.each do |cart_item|
+      OrderDetail.create(
+        item: cart_item.item,
+        order: @order,
+        amount: cart_item.amount,
+        price: cart_item.item.price
+      )
+      current_customer.cart_items.destroy_all
+    end
   end
 
   def complete

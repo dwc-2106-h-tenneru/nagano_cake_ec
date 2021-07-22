@@ -53,19 +53,22 @@
         </tr>
       </thead>
       <tbody>
+        <% @sum = 0 %>
         <% @order_details.each do |order_detail| %>
           <tr>
-            <td><%= @order_detail.item.name %></td> <!--注文商品名-->
-            <td><%= @item.add_tax_price.to_s(:delimited) %></td> <!--単価(税込)3桁区切り-->
-            <td><%= @order_detail.amount %></td>
-            <td><%= converting_to_jpy(@order_detail.price) %></td> <!--小計-->
+            <td><%= order_detail.item.name %></td> <!--注文商品名-->
+            <td><%= order_detail.price %></td> <!--単価(税込)3桁区切り-->
+            <td><%= order_detail.amount %></td>
+            <td><%= converting_to_jpy(order_detail.price * order_detail.amount) %></td> <!--小計-->
+            <!--%= converting_to_jpy(order_detail.price %-->
             <td><!--制作ステータス-->
-              <%= form_with(model: @order_detail, url: admin_order_detail_path(@order_detail), local: true) do |f| %>
-                <%= f.select :status, OrderDetail.statuses.keys, {prompt: false} %>
+              <%= form_with(model: order_detail, url: admin_order_detail_path(order_detail), local: true) do |f| %>
+                <%= f.select :making_status, OrderDetail.making_statuses.keys, {prompt: false} %>
                 <%= f.submit "更新" %>
               <% end %>
             </td>
           </tr>
+          <% @sum += order_detail.price * order_detail.amount %>
         <% end %>
     </table>
   </div>
@@ -73,15 +76,15 @@
     <table class='table'>
       <tr>
 	      <th>商品合計</th>
-	      <!--<th>%= @order_details.price %></th>-->
+	      <th><%= converting_to_jpy(@sum) %>円</th>
       </tr>
       <tr>
 	      <th>送料</th>
-	      <th><%= @order.shipping_cost %></th>
+	      <th><%= @order.shipping_cost %>円</th>
       </tr>
       <tr>
 	      <th>請求金額合計</th>
-	      <th><%= converting_to_jpy(@order.total_price) %></th>
+	      <th><%= converting_to_jpy(@order.total_price) %>円</th>
       </tr>
     </table>
     <!--ステータス確認のため設置、あとで消す-->

@@ -17,13 +17,13 @@ class Admin::OrdersController < ApplicationController
   end
 
   private
-  
+
   def order_params
     params.require(:order).permit(:status, :price, :shipping_cost, :customer_id)
   end
-  
-  def orderd_detail_params
+
+  def order_detail_params
     params.require(:order_detail).permit(:making_status, :amount, :price, :item_id, :order_id)
   end
-  
+
 end
