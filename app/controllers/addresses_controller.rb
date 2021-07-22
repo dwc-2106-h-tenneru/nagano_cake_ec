@@ -2,7 +2,7 @@ class AddressesController < ApplicationController
   def index
     @addresses = Address.all
     @address = Address.new
-    @customer = current_customer
+    @customer = Customer.find(1)
   end
 
 
@@ -14,7 +14,7 @@ class AddressesController < ApplicationController
 
   def edit
     @address = Address.find(params[:id])
-    @customer = current_customer
+    @customer = Customer.find(1)
   end
 
   def update

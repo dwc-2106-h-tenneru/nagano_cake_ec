@@ -1,9 +1,9 @@
 class HomesController < ApplicationController
   def top
-    @customer = current_customer
+    @customer = Customer.find(1)
   end
 
   def about
-    @customer = current_customer
+    @customer = Customer.find(1)
   end
 end
