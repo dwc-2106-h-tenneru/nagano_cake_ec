@@ -13,7 +13,15 @@
               <% end %>
               <div class="card-body">
                 <p class="card-title"><%= item.name %></p>
-                <p class="card-text">¥<%= converting_to_jpy(item.add_tax_price) %></p>
+                <p class="card-text">
+                  ¥<%= converting_to_jpy(item.add_tax_price) %></br>
+                  <% if item.is_active == true %>
+                    <font color="green">販売中</font>
+                  <% elsif item.is_active == false %>
+                    <font color="silver">売り切れ</font>
+                  <%  end %>
+                </p>
+
               </div>
             </div>
             <% end %>
