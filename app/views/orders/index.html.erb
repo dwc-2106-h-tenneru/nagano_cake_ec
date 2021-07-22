@@ -11,16 +11,15 @@
    </tr>
   </thead>
   <tbody>
-<%= @orders.each do |order| %>
+<%= @order_details.each do |order_detail| %>
    <tr>
     <td></td>
     <td>
-        <%= order.address %>
-        <%= order.post_code %>
-        <%= order.name %>
+      〒<%= order.post_code.to_s.insert(3, "-") %> <%= @order.address %>
+        <br><%= order.name %>
     </td>
     <td>
-      <%= @cart_items %>
+      <%= order_detail.item.name %>
      </td>
     <td>
      <%= order.total_price %>
@@ -30,4 +29,4 @@
     </tr>
    </tbody>
  </table>
- <% end %>
+<% end %>

@@ -40,6 +40,16 @@ end
     @order.customer_id = current_customer.id
     # @cart_item.customer_id = current_customer.id
     @order.save
+    @cart_items = current_customer.cart_items.all
+    @cart_items.each do |cart_item|
+      OrderDetail.create(
+        item: cart_item.item,
+        order: @order,
+        amount: cart_item.amount,
+        price: cart_item.item.price
+      )
+      current_customer.cart_items.destroy_all
+    end
     redirect_to orders_complete_path
   end
 
@@ -52,6 +62,7 @@ end
     @order = Order.find(1)
     @orders = Order.all
     @cart_items = current_customer.cart_items
+    @order_details = @order_details.order
   end
 
   def show
@@ -75,5 +86,9 @@ end
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
+
+def order_detail_params
+  params.require(:order_detail).permit(:making_status, :amount, :price, :item_id, :order_id)
+end
 
 end
