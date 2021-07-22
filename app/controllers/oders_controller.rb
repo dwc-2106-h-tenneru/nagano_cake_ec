@@ -1,2 +1,0 @@
-class OdersController < ApplicationController
-end
