@@ -33,6 +33,7 @@ class OrdersController < ApplicationController
       @order.name = params[:order][:name]
     end
     # redirect_to orders_confirms_path
+    @order.shipping_cost = 800
   end
 
   def create
@@ -49,6 +50,12 @@ class OrdersController < ApplicationController
 
   def index
     @customer = Customer.find(1)
+    @order = Order.find(1)
+    @orders = Order.all
+    @cart_items = current_customer.cart_items
+  end
+
+  def show
   end
 
   # def confirm

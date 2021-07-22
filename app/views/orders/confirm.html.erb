@@ -1,6 +1,6 @@
 <h2>注文情報確認</h2>
 
-<%#= form_with model: @order ,url: order_path, method: :patch, local: true do |f| %>
+<%= form_with model: @order ,url: orders_path, method: :post, local: true do |f| %>
  <table class="table table-hover table-inverse">
   <thead>
    <tr>
@@ -32,9 +32,42 @@
  <table class="table table-hover table-inverse">
   <thead>
    <tr>
+       <th>送料</th>
+       <th>商品合計</th>
+       <th>請求金額</th>
+   </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td><%= @order.shipping_cost %></td>
+     <td><%= @sum %></td>
+     <td><%= @order.shipping_cost + @sum %></td>
+    </tr>
+   </tbody>
+ </table>
+
+ <h3>支払い方法</h3>
+ <table class="table table-hover table-inverse">
+  <thead>
+   <tr>
+       <th><%= @order.payment_method %></th>
+   </tr>
+ </table>
+
+ <h3>届け先</h3>
+ <table class="table table-hover table-inverse">
+  <thead>
+   <tr>
        <th><%= @order.address %></th>
        <th><%= @order.post_code %></th>
        <th><%= @order.name %></th>
+   </tr>
  </table>
-<%#= f.submit "確認画面に進む",class:"btn btn-success" %>
- <%# end %>
+ <%= f.hidden_field :address, value: @order.address %>
+ <%= f.hidden_field :post_code, value: @order.post_code %>
+ <%= f.hidden_field :name, value: @order.name %>
+ <%= f.hidden_field :payment_method, value: @order.payment_method %>
+ <%= f.hidden_field :total_price, value: @order.shipping_cost + @sum %>
+ <%#= f.hidden_field :order_id, value: @order.id %>
+<%= f.submit "注文を確定する",class:"btn btn-success" %>
+ <% end %>
