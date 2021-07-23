@@ -6,7 +6,7 @@
 <% end %>
 <dev class="container">
   <div class="row">
-    <div class="col-md-12"> 
+    <div class="col-md-10 ml-5">
       <h3><span style="background-color:#EEEEEE">注文履歴詳細</span></h3>
         <table class="table table-borderless">
           <tr>
@@ -47,7 +47,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-7"> 
+    <div class="col-md-8 ml-5">
       <div class="order_details">
         <table class="table table-borderless">
           <thead class="thead-light">
@@ -78,7 +78,7 @@
         </table>
       </div>
     </div>
-    <div class="col-md-5"> 
+    <div class="col-md-3 align-self-end">
       <div class="price">
         <table class='table table-borderless'>
           <tr>
@@ -99,5 +99,7 @@
   </div>
 </div>
 
-<!--ステータス確認のため設置、あとで消す-->
-<%= link_to "topに戻る", admin_root_path, class: "btn btn-outline-secondary btn-sm" %>
+<div class="ml-5">
+  <!--ステータス確認のため設置、あとで消す-->
+  <%= link_to "topに戻る", admin_root_path, class: "btn btn-outline-secondary btn-sm" %>
+</div>
