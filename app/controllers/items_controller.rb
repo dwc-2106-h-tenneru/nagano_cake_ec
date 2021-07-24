@@ -12,7 +12,6 @@ class ItemsController < ApplicationController
     @genres = Genre.all
     @cart_item = CartItem.new
     # @cart = CartItems
-
   end
 
   private
