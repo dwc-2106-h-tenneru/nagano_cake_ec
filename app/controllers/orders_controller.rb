@@ -45,6 +45,10 @@ end
     @order.customer_id = current_customer.id
     # @cart_item.customer_id = current_customer.id
     @order.save
+<<<<<<< HEAD
+=======
+    redirect_to orders_complete_path
+>>>>>>> origin/develop
     @cart_items = current_customer.cart_items.all
     redirect_to orders_complete_path
     @cart_items.each do |cart_item|
@@ -95,12 +99,20 @@ end
     params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
 
+<<<<<<< HEAD
 def order_detail_params
   params.require(:order_detail).permit(:making_status, :amount, :price, :item_id, :order_id)
 end
 
+=======
+>>>>>>> origin/develop
   def address_params
     params.require(:order).permit(:post_code, :address, :name)
 
   end
+<<<<<<< HEAD
 end
+=======
+
+end
+>>>>>>> origin/develop
