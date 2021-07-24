@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
 
   resources :items, only: [:index, :show]
-   resources :cart_items, only: [:index, :create, :destroy, :update]
-  resources :orders, only: [:index, :create, :destroy, :update, :new]
+   resources :cart_items, only: [:index, :create, :destroy, :update] 
+  resources :orders, only: [:index, :create, :destroy, :update, :new, :show]
 
 
   root to: 'homes#top'
@@ -23,7 +23,6 @@ Rails.application.routes.draw do
   post 'orders/confirm' => 'orders#confirm'
   get 'orders/confirms' => 'orders#confirms'
   get 'orders/complete' => 'orders#complete'
-  delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 

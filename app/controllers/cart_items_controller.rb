@@ -54,15 +54,9 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path
-    @cart_items = CartItem.all
-    @cart_items.destroy
-    redirect_to cart_items_path
-  end
-
-  def destroy_all
-    @cart_items = CartItem.all
-    @cart_item.destroy
-    redirect_to cart_items_path
+    # @cart_items = CartItem.all
+    # @cart_items.destroy
+    # redirect_to cart_items_path
   end
 
   def update

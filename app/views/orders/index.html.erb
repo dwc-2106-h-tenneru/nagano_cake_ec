@@ -11,21 +11,21 @@
    </tr>
   </thead>
   <tbody>
-<%= @order_details.each do |order_detail| %>
+<%= @order.each do |order| %>
    <tr>
     <td></td>
     <td>
-      〒<%= order.post_code.to_s.insert(3, "-") %> <%= @order.address %>
-        <br><%= order.name %>
+      〒<%#= order.post_code.to_s.insert(3, "-") %> <%= @order.address %>
+        <br><%= @order.name %>
     </td>
     <td>
-      <%= order_detail.item.name %>
+      <%= @order_detail.item.name %>
      </td>
     <td>
-     <%= order.total_price %>
+     <%= @order.total_price %>
     </td>
-    <td></td>
-    <td></td>
+    <td><%= @order.status %></td>
+    <td><%#= link_to "詳細", order_path(params[:id]),class:"btn btn-success" %></td>
     </tr>
    </tbody>
  </table>

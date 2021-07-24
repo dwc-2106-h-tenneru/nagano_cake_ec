@@ -59,13 +59,17 @@ end
 
   def index
     @customer = Customer.find(1)
-    @order = Order.find(1)
+    @order = Order.find(order_params)
     @orders = Order.all
     @cart_items = current_customer.cart_items
-    @order_details = @order_details.order
+    @order_detail = OrderDetail.find(1)
   end
 
   def show
+    @order = Order.find(order_params)
+    @customer = Customer.find(1)
+    @order.shipping_cost = 800
+    @order_details = @order.order_details
   end
 
   # def confirm
@@ -90,5 +94,7 @@ end
 def order_detail_params
   params.require(:order_detail).permit(:making_status, :amount, :price, :item_id, :order_id)
 end
+
+
 
 end
