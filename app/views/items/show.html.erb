@@ -1,22 +1,22 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-3">
+    <div class="row pt-4 mb-5">
+
+      <div class="col-3">
         <%= render 'items/genre', genres: @genres %>
       </div>
-      <div class="col-md-8 offset-md-1">
-  <%= attachment_image_tag @item, :image %>
-  <p><%= @item.name %></p>
-  <p><%= @item.introduction %></p>
-  <p>￥<%= @item.add_tax_price.to_s(:delimited) %> (税込) </p>
+      <div class="col-md-8 offset-md-1 mb-5">
+        <%= attachment_image_tag @item, :image, width: '70%', height: '70%' %>
+        <p><strong><%= @item.name %></strong></p>
+        <p><%= @item.introduction %></p>
+        <p>￥<%= @item.add_tax_price.to_s(:delimited) %> (税込) </p>
 
-<%= form_with model: @cart_item ,url: cart_items_path, method: :post, local: true do |f| %>
-  <%= f.hidden_field :item_id, value: @item.id %>
-  <%= f.select :amount, [[1], [2], [3], [4],[5]], include_blank: "個数選択" %>
-  <%= f.submit "カートに入れる",class:"btn btn-success" %>
-  <% end %>
-  <%#= link_to "カートに入れる", %>
-</div>
+        <%= form_with model: @cart_item ,url: cart_items_path, method: :post, local: true do |f| %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <%= f.select :amount, [[1], [2], [3], [4],[5]], include_blank: "個数選択" %>
+          <%= f.submit "カートに入れる",class:"btn btn-success" %>
+        <% end %>
+          <%#= link_to "カートに入れる", %>
       </div>
-    </div>
-  </div>
 
+    </div>
+</div>
