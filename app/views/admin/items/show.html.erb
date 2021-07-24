@@ -1,10 +1,10 @@
 <div class="container">
-  <h3><span style="background-color:#EEEEEE">商品詳細</span></h3>
-    <div class="row align-items-center">
-      <div class="col-3 col-xs-offset-2">
+  <h3 class="pt-3"><span style="background-color:#EEEEEE">商品詳細</span></h3>
+    <div class="row md-4">
+      <div class="col-md-4 pt-3">
         <%= attachment_image_tag @item, :image, :fill, 100, 100, fallback: "noimage.jpg" %>
       </div>
-      <div class="col-5">
+      <div class="col-md-8 pt-3">
         <table class="table table-borderless">
           <tr>
             <th>商品名</th>
