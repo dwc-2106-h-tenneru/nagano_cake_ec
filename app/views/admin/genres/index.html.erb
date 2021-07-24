@@ -1,22 +1,20 @@
 <dev class="container">
+  <%= form_with model:@genre, :url => {:action => :create}, local: true do |f| %>
   <div class="row">
-    <div class="mx-auto col-3">
+    <div class="col-md-6 ml-5">
       <h3><span style="background-color:#EEEEEE">ジャンル一覧・追加</span></h3>
-      <%= form_with model:@genre, :url => {:action => :create} do |f| %>
-        <div class="row">
-          <div class="col-5">
-            <div class="form-group">
-              <%= f.label :ジャンル名 %>
-              <%= f.text_field :name, class: "form-control" %>
-            </div>
-          </div>
-          <div class="col-2 align-self-end">
-            <div class="form-group">
-              <%= f.submit '新規登録', class: "btn btn-success btn-lg" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+        <table class='table table-borderless'>
+          <tr>
+            <th><%= f.label :ジャンル名 %></th>
+	          <th><%= f.text_field :name, placeholder: "ジャンル名", class: "form-control" %></th>
+	          <th><%= f.submit '新規登録', class: "btn btn-success btn-lg" %></th>
+          </tr>
+        </table>
+    </div>
+  </div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-4 ml-5">
       <table class="table">
         <thead class="thead-light">
           <tr>
