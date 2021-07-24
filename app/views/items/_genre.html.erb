@@ -1,12 +1,10 @@
-<table class = "table">
+<table class = "table table-bordered">
+  <tr class="table-active">
+     <th>ジャンル検索</th>
+  </tr>
   <% genres.each do |genre| %>
-  <thead>
-    <tr>カテゴリ</tr>
-  </thead>
-  <tbody>
-    <tr>
-    <th><%= genre.name %></th>
-    </tr>
-  </tbody>
+  <tr>
+    <td><%= genre.name %></td>
+  </tr>
   <% end %>
 </table>

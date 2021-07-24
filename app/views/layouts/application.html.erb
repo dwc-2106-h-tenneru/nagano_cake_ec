@@ -5,13 +5,22 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-  
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script-->
+
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render 'layouts/header', customer: @customer %>
+    <% if admin_signed_in? %>
+      <%= render 'layouts/aheader', admin: @admin %>
+    <% else %>
+      <%= render 'layouts/header', customer: @customer %>
+    <% end %>
+
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

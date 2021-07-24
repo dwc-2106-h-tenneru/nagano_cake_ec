@@ -1,6 +1,11 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='px-3 mx-auto text-center'>
+<div class='container px-5 px-sm-0 mt-3'>
+  <div class='row pt-2'>
+
+    <div class="col-2">
+        <%= render 'items/genre', genres: @genres %>
+    </div>
+
+    <div class='col-10 text-center'>
 
       <h3>トップページ</h3>
       <p>
@@ -11,17 +16,21 @@
       </p>
 
       <h3>新着商品</h3>
-      <div class="row">
+      <div class="row pt-4">
         <% @items.each do |item| %>
-        <div class="card col-md-4" style="width: 18rem;">
+        <div class="card col-md-3 ml-auto p-1" style="width: 18rem;">
+          <%= link_to item_path(item.id) do %>
           <%= attachment_image_tag item, :image, class: "card-img-top"%>
+          <% end %>
           <div class="card-body">
             <p class="card-title"><%= item.name %></p>
-            <p class="card-text">¥<%= converting_to_jpy(item.price) %></p>
+            <p class="card-text">¥<%= converting_to_jpy(item.add_tax_price) %></p>
           </div>
         </div>
         <% end %>
       </div>
+
+      <p class="text-right"><%= link_to "全ての商品を見る>", items_path(@customer) %></p>
 
     </div>
   </div>
