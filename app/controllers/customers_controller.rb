@@ -1,25 +1,25 @@
 class CustomersController < ApplicationController
   def show
-    @customer = Customer.find(3)
+    @customer = Customer.find(1)
   end
 
   def edit
-    @customer = Customer.find(3)
+    @customer = Customer.find(1)
   end
 
   def update
-    @customer = Customer.find(3)
+    @customer = Customer.find(1)
     @customer.update(customer_params)
     redirect_to
   end
 
   def unsubscribe
-    @customer = Customer.find(3)
+    @customer = Customer.find(1)
   end
 
 
   def withdraw
-    @customer = Customer.find(3)
+    @customer = Customer.find(1)
     @customer.update(is_deleted: false)
     reset_session
     redirect_to root_path
