@@ -4,17 +4,12 @@
 
 <%= form_with model: @order ,url: orders_confirm_path, method: :post, local: true do |f| %>
  <h4>支払い方法</h4>
-   <!--<p>クレジットカード: <%#= f.check_box :payment_method ,{ multiple: true }, "クレジットカード", nil %></p>-->
-   <!--<p>銀行振込: <%#= f.check_box :payment_method ,{ multiple: true }, "銀行振込", nil %></p>-->
+
   <%= f.radio_button :payment_method, "クレジットカード" %>
   <%= f.label :payment_method, "クレジットカード" %>
   <%= f.radio_button :payment_method, "銀行振込" %>
   <%= f.label :payment_method, "銀行振込" %>
 
-
-  <%#= radio_button_tag(:payment_method) %>
-  <%#= label_tag(:payment_method, "クレジットカード") %>
-  <%#= label_tag(:payment_method, "銀行振込") %>
   <h4>お届け先</h4>
    <%= f.label :address, "お届け先" %>
    <br>
