@@ -1,0 +1,44 @@
+
+ <body> 
+ <% provide(:title, "会員一覧") %>
+  <h2 class="head-line title_h2 text-center">
+    <%#= last_name(@Customer) %>さんの会員詳細
+  </h2>
+        <p>
+          顧客ID<%= @Customer.id %>
+          <% if @Customer.is_deleted == true %>
+            <span><i class="fas fa-bullseye blue"></i>退会済
+          <% elsif @Customer.is_deleted == false %>
+            <i class="fas fa-bullseye red"></i>会員</span>
+          <% end %>
+        </p>
+        <p>
+          名前(漢字)<%= @Customer.last_name %>
+        </p>
+ 
+        <p>
+          フリガナ(カタカナ)<%= @Customer.last_name_kana %>
+        </p>
+
+        <p>
+          郵便番号<%= @Customer.post_code %>
+        </p>
+
+        <p>
+          住所<%= @Customer.address %>
+        </p>
+
+        <p>
+          電話番号<%= @Customer.phone_number %>
+        </p>
+
+        <p>
+          メールアドレス<%= @Customer.email%>
+        </p>
+
+
+      <div class="actions">
+        <%= link_to "編集",edit_admin_customer_path %>
+        <%#= link_to " 注文履歴一覧を見る", current_index_admin_order_path(@customer), class: "glyphicon glyphicon-folder-open btn btn-info" %>
+
+</body>
