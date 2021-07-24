@@ -3,12 +3,6 @@ class OrdersController < ApplicationController
     @customer = Customer.find(1)
     @order = Order.new
   end
-# @sta = params[:order][:address].to_i
-# # binding.pry
-# @order_address = Address.find(@sta)
-# @order.post_code = @address.post_code
-# @order.address = @order_address.address
-# @order.name = @order_address.name
 
   def confirm
     @order = Order.new
@@ -61,11 +55,15 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.page(params[:page]).reverse_order
     @customer = Customer.find(1)
+    
     # @order = Order.find(order_params)
     # @cart_items = current_customer.cart_items
   end
 
   def show
+    @item = Item.find(params[:id])
+    @customer = Customer.find(1)
+
   end
 
 
