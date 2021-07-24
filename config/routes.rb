@@ -25,37 +25,30 @@ Rails.application.routes.draw do
   get 'customer/unsubscribe' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
   patch 'customer/withdraw' => 'customers#withdraw', as: 'withdraw_customer'
   put 'customer/withdraw' => 'customers#withdraw'
-<<<<<<< HEAD
-=======
   post 'orders/confirm' => 'orders#confirm'
   get 'orders/confirms' => 'orders#confirms'
   get 'orders/complete' => 'orders#complete'
 
->>>>>>> origin/develop
+
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+
+  resources :items, only: [:index, :show]
+  resources :cart_items, only: [:index, :create, :destroy, :update] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
+  resources :orders, only: [:index, :create, :destroy, :update, :new]
 
 
   namespace :admin do
     root to: "homes#top"
     resources :items, only: [:new, :create, :show, :index, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
-<<<<<<< HEAD
     resources :customers, only:[:index, :show, :edit, :update]
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
-<<<<<<< HEAD
->>>>>>> origin/develop
-=======
     post 'order_details/:id' => 'orders#show'
->>>>>>> origin/develop
-  end
 
-=======
->>>>>>> origin/develop
-=======
->>>>>>> origin/develop
-end
+   end
+  end
