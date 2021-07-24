@@ -1,0 +1,11 @@
+<dev class="container">
+  <div class="row">
+    <div class='mx-auto'>
+      <h3><span style="background-color:#EEEEEE">商品編集</span></h3>
+      <%= form_with model:@item, :url => {:action => :update} do |f| %>
+        <%= render 'items_form', f: f %>
+        <%= f.submit '変更を保存', class: "btn btn-success" %>
+      <% end %>
+    </dev>
+  </div>
+</div>

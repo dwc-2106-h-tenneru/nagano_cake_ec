@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="/">NaganoCake<i class="fab fa-java"></i></a>
+
+        <% if customer_signed_in? %>
+          <p class="offset-md-4">ようこそ、<%= @customer.last_name %>さん！</p>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <%= link_to 'マイページ', customer_path,class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+            <%= link_to '商品一覧', items_path,class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+            <%= link_to 'カート', cart_items_path,class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'nav-link' %>
+            </li>
+          </ul>
+        <% else %>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <%= link_to 'About', about_path,class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+            <%= link_to '商品一覧', items_path,class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_customer_registration_path,class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_customer_session_path,class: 'nav-link' %>
+            </li>
+          </ul>
+        <% end %>
+
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>

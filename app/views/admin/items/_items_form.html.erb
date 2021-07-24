@@ -1,0 +1,31 @@
+<table class="table table-borderless">
+  <tr>
+    <th><%= f.label :商品画像 %></th>
+    <th><%= f.attachment_field :image, class: "form-control-file" %></th>
+  </tr>
+  <tr>
+    <th><%= f.label :商品名 %></th>
+    <th><%= f.text_field :name, placeholder: "商品名", class: "form-control" %></th>
+  </tr>
+  <tr>
+    <th><%= f.label :商品説明 %></th>
+    <th><%= f.text_area :introduction, placeholder: "ここに説明文を記述します", class: "form-control" %></th>
+  </tr>
+  <tr>
+    <th><%= f.label :ジャンル %></th>
+    <th><%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => "--選択してください--", class: "form-control" %></th>
+  </tr>
+  <tr>
+    <th><%= f.label :税抜価格 %></th>
+    <th><%= f.text_field :price, placeholder: "1000", class: "form-control" %>円</th>
+  </tr>
+  <tr>
+    <th><%= f.label :販売ステータス %></th>
+    <th>
+      <%= f.radio_button :is_active, true %>
+      <%= f.label :is_active, "販売中", value: true %>
+      <%= f.radio_button :is_active, false %>
+      <%= f.label :is_active, "販売停止中", value: false %>
+    </th>
+  </tr>
+</table>

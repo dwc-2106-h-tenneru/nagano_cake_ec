@@ -1,0 +1,16 @@
+<dev class="container">
+  <%= form_with model:@genre, :url => {:action => :update}, local: true do |f| %>
+  <div class="row">
+    <div class="col-md-6 ml-5">
+      <h3><span style="background-color:#EEEEEE">ジャンル編集</span></h3>
+        <table class='table table-borderless'>
+          <tr>
+            <th><%= f.label :ジャンル名 %></th>
+            <th><%= f.text_field :name, class: "form-control" %></th>
+            <th><%= f.submit '変更を保存', class: "btn btn-success" %></th>
+          </tr>
+        </table>
+    </div>
+  </div>
+  <% end %>
+</div>

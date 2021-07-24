@@ -1,0 +1,32 @@
+ <body> 
+ 　<% provide(:title, '会員一覧') %>
+ 
+    <thead>
+      <tr class="info">
+
+        <p>
+        <th>氏名</th>
+        </p>
+        <p>
+        <th>メールアドレス</th>
+        </p>
+      </tr>
+    <tbody>
+      <p>
+        <% @Customers.each do |customer| %>
+          <tr>
+            <th>会員ID</th>
+              <%= customer.id %>
+            </td>
+              <%= link_to 'show', admin_customer_path(customer) %>
+                <%= customer.last_name %>
+                <%= customer. first_name %>
+              <%# end %>
+            </td>
+            <p>
+            <th>メールアドレス</th>
+              <%= customer.email %>
+          </tr>
+        <% end %>
+      </tbody>
+</body>

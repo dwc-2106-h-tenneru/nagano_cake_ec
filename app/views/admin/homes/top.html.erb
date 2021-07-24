@@ -1,0 +1,32 @@
+<dev class="container">
+  <div class="row">
+    <div class='mx-auto col-9'>
+      <h3><span style="background-color:#EEEEEE">注文履歴一覧</span></h3>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td>
+                <%= link_to admin_order_path(order.id) do %>
+                  <%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+                <% end %>
+              </td>
+              <td><%= @customer.last_name %><%= @customer.first_name %></td>
+              <td><%= order.order_details.sum(:amount) %></td>
+              <td><%= order.status %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @orders %>
+    </div>
+  </div>
+</div>
