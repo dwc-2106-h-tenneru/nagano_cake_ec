@@ -42,7 +42,6 @@ class OrdersController < ApplicationController
     # @cart_item.customer_id = current_customer.id
     @order.save
     redirect_to orders_complete_path
-<<<<<<< HEAD
     @cart_items = current_customer.cart_items.all
     @cart_items.each do |cart_item|
       OrderDetail.create(
@@ -53,8 +52,6 @@ class OrdersController < ApplicationController
       )
       current_customer.cart_items.destroy_all
     end
-=======
->>>>>>> origin/develop
   end
 
   def complete
@@ -90,12 +87,9 @@ class OrdersController < ApplicationController
     params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
 
-<<<<<<< HEAD
   def address_params
     params.require(:order).permit(:post_code, :address, :name)
 
   end
 
-=======
->>>>>>> origin/develop
 end
