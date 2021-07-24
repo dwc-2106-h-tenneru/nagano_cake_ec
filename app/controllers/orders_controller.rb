@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
   def new
     @customer = Customer.find(1)
     @order = Order.new
-
   end
 # @sta = params[:order][:address].to_i
 # # binding.pry
@@ -60,7 +59,7 @@ class OrdersController < ApplicationController
 
   def index
     @customer = Customer.find(1)
-    @order = Order.find(1)
+    @order = Order.find(order_params)
     @orders = Order.all
     @cart_items = current_customer.cart_items
   end
