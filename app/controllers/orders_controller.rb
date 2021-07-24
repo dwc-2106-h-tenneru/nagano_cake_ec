@@ -1,8 +1,16 @@
 class OrdersController < ApplicationController
+<<<<<<< HEAD
 def new
     @customer = Customer.find(1)
     @order = Order.new
 end
+=======
+  def new
+    @customer = Customer.find(1)
+    @order = Order.new
+
+  end
+>>>>>>> origin/develop
 # @sta = params[:order][:address].to_i
 # # binding.pry
 # @order_address = Address.find(@sta)
@@ -40,6 +48,7 @@ end
     @order.customer_id = current_customer.id
     # @cart_item.customer_id = current_customer.id
     @order.save
+<<<<<<< HEAD
     @cart_items = current_customer.cart_items.all
     @cart_items.each do |cart_item|
       OrderDetail.create(
@@ -50,6 +59,8 @@ end
       )
       current_customer.cart_items.destroy_all
     end
+=======
+>>>>>>> origin/develop
     redirect_to orders_complete_path
   end
 
@@ -59,6 +70,7 @@ end
 
   def index
     @customer = Customer.find(1)
+<<<<<<< HEAD
     @order = Order.find(order_params)
     @orders = Order.all
     @cart_items = current_customer.cart_items
@@ -70,6 +82,14 @@ end
     @customer = Customer.find(1)
     @order.shipping_cost = 800
     @order_details = @order.order_details
+=======
+    @order = Order.find(1)
+    @orders = Order.all
+    @cart_items = current_customer.cart_items
+  end
+
+  def show
+>>>>>>> origin/develop
   end
 
   # def confirm
@@ -91,10 +111,13 @@ end
     params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
 
+<<<<<<< HEAD
 def order_detail_params
   params.require(:order_detail).permit(:making_status, :amount, :price, :item_id, :order_id)
 end
 
 
 
+=======
+>>>>>>> origin/develop
 end

@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container mt-3">
   <h3>会員情報編集</h3>
   <%= form_with model:@customer, :url => {:action => :update}, local:true do |f| %>
-    <div class="row">
+    <div class="row pt-4">
       <div class="col-3">名前</div>
       <div class="form-group col-4">
         <%= f.label "(姓)",for: "inputEmail4", class: "form-label" %><br />
