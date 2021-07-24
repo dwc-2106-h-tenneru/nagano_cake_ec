@@ -11,22 +11,22 @@
    </tr>
   </thead>
   <tbody>
-<%= @order.each do |order| %>
+<% @orders.each do |order| %>
    <tr>
-    <td></td>
+    <td><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
     <td>
         <%= order.address %>
         <%= order.post_code %>
         <%= order.name %>
     </td>
     <td>
-      <%= @cart_items %>
+      <%#= order.order_details.item %>
      </td>
     <td>
      <%= order.total_price %>
     </td>
-    <td></td>
-    <td></td>
+    <td><%= order.status %></td>
+    <td><%= link_to "詳細",  %></td>
     </tr>
    </tbody>
  </table>

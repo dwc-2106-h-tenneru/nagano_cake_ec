@@ -7,16 +7,6 @@ Rails.application.routes.draw do
   registrations: 'customers/registrations'
 }
 
-
-  resources :items, only: [:index, :show]
-  resources :cart_items, only: [:index, :create, :destroy, :update] do
-    collection do
-      delete 'destroy_all'
-    end
-  end
-  resources :orders, only: [:index, :create, :destroy, :update, :new]
-
-
   root to: 'homes#top'
   get 'about' => 'homes#about'
   get 'customer/edit' => 'customers#edit'

@@ -22,9 +22,10 @@ class OrdersController < ApplicationController
       @order.name = current_customer.last_name
 
     elsif params[:order][:address_option] == "1"
-      @order.post_code = Address.post_code
-      @order.address = Address.address
-      @order.name = Address.name
+      @address = Address.find(params[:order][:id])
+      @order.post_code = @address.post_code
+      @order.address = @address.address
+      @order.name = @address.name
 
     elsif params[:order][:address_option] == "2"
       @order.post_code = params[:order][:post_code]
@@ -58,21 +59,14 @@ class OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.page(params[:page]).reverse_order
     @customer = Customer.find(1)
-    @order = Order.find(order_params)
-    @orders = Order.all
-    @cart_items = current_customer.cart_items
+    # @order = Order.find(order_params)
+    # @cart_items = current_customer.cart_items
   end
 
   def show
   end
-
-  # def confirm
-  #   @customer = Customer.find(1)
-  #   @cart_item = CartItem.where(customer_id: current_customer.id)
-  #   @cart_items = CartItem.all
-  #   @order = Order.find(params[:id])
-  # end
 
 
   private
