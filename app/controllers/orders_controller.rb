@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def new
-    @customer = Customer.find(1)
+    @customer = Customer.find(3)
     @order = Order.new
 
   end
@@ -23,9 +23,10 @@ class OrdersController < ApplicationController
       @order.name = current_customer.last_name
 
     elsif params[:order][:address_option] == "1"
-      @order.post_code = Address.post_code
-      @order.address = Address.address
-      @order.name = Address.name
+      @address = Address.find(params[:order][:id])
+      @order.post_code = @address.post_code
+      @order.address = @address.address
+      @order.name = @address.name
 
     elsif params[:order][:address_option] == "2"
       @order.post_code = params[:order][:post_code]
@@ -55,11 +56,11 @@ class OrdersController < ApplicationController
   end
 
   def complete
-    @customer = Customer.find(1)
+    @customer = Customer.find(3)
   end
 
   def index
-    @customer = Customer.find(1)
+    @customer = Customer.find(3)
     @order = Order.find(1)
     @orders = Order.all
     @cart_items = current_customer.cart_items

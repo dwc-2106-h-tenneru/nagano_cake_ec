@@ -1,21 +1,15 @@
 Rails.application.routes.draw do
 
-  devise_for :admins
+  devise_for :admins, controllers: {
+  # sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
+}
   devise_for :customers, controllers: {
   sessions:      'customers/sessions',
   passwords:     'customers/passwords',
   registrations: 'customers/registrations'
 }
-
-
-  resources :items, only: [:index, :show]
-  resources :cart_items, only: [:index, :create, :destroy, :update] do
-    collection do
-      delete 'destroy_all'
-    end
-  end
-  resources :orders, only: [:index, :create, :destroy, :update, :new]
-
 
   root to: 'homes#top'
   get 'about' => 'homes#about'
