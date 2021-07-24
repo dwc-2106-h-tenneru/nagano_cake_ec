@@ -15,17 +15,17 @@
 <% @cart_items.each do |cart_item| %>
    <tr>
     <td><%= cart_item.item.name %></td>
-    <td><%= cart_item.item.price %></td>
+    <td><%= cart_item.item.add_tax_price %></td>
     <td>
       <%= cart_item.amount %>
      <%#= link_to "変更", cart_item.amount(@cart_item), method: :patch, class:"btn btn-success" %>
      </td>
     <td>
-     <%= cart_item.item.price * cart_item.amount %>
+     <%= cart_item.item.add_tax_price * cart_item.amount %>
      <!--ここはsum+=sub_total　と%= sub_total -->
     </td>
     </tr>
-    　<% @sum += cart_item.item.price * cart_item.amount %>
+    　<% @sum += cart_item.item.add_tax_price * cart_item.amount %>
    </tbody>
  <% end %>
  </table>
