@@ -33,8 +33,7 @@ class CartItemsController < ApplicationController
   end
 
   def destroy_all
-    @cart_item = CartItem.all
-    @cart_item.destroy
+    CartItem.destroy_all
     redirect_to cart_items_path
   end
 

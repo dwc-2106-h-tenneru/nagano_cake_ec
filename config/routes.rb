@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
 
   resources :items, only: [:index, :show]
-   resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
+  resources :cart_items, only: [:index, :create, :destroy, :update] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
   resources :orders, only: [:index, :create, :destroy, :update, :new]
 
 
@@ -43,6 +47,10 @@ Rails.application.routes.draw do
 =======
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
+<<<<<<< HEAD
+>>>>>>> origin/develop
+=======
+    post 'order_details/:id' => 'orders#show'
 >>>>>>> origin/develop
   end
 
