@@ -54,17 +54,11 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path
-<<<<<<< HEAD
-    # @cart_items = CartItem.all
-    # @cart_items.destroy
-    # redirect_to cart_items_path
-=======
   end
 
   def destroy_all
     CartItem.destroy_all
     redirect_to cart_items_path
->>>>>>> origin/develop
   end
 
   def update
