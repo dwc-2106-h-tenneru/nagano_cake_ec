@@ -25,7 +25,11 @@
    <br>
    <%= f.radio_button :address_option, 1 %>
    <%= f.label :address, "登録済住所から選択" %>
+<<<<<<< HEAD
    <%= f.collection_select :address , current_customer.addresses, :id, :address_set %>
+=======
+   <%= f.collection_select :address, current_customer.addresses, :id, :order_address %>
+>>>>>>> origin/develop
 
    <br>
    <%= f.radio_button :address_option, 2 %>

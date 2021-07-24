@@ -8,8 +8,17 @@ Rails.application.routes.draw do
 
 
   resources :items, only: [:index, :show]
+<<<<<<< HEAD
    resources :cart_items, only: [:index, :create, :destroy, :update] 
   resources :orders, only: [:index, :create, :destroy, :update, :new, :show]
+=======
+  resources :cart_items, only: [:index, :create, :destroy, :update] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
+  resources :orders, only: [:index, :create, :destroy, :update, :new]
+>>>>>>> origin/develop
 
 
   root to: 'homes#top'
@@ -32,6 +41,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
+    post 'order_details/:id' => 'orders#show'
   end
 
 end

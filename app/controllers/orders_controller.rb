@@ -62,6 +62,19 @@ end
 =======
 >>>>>>> origin/develop
     redirect_to orders_complete_path
+<<<<<<< HEAD
+    @cart_items = current_customer.cart_items.all
+    @cart_items.each do |cart_item|
+      OrderDetail.create(
+        item: cart_item.item,
+        order: @order,
+        amount: cart_item.amount,
+        price: cart_item.item.price
+      )
+      current_customer.cart_items.destroy_all
+    end
+=======
+>>>>>>> origin/develop
   end
 
   def complete
@@ -112,11 +125,18 @@ end
   end
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 def order_detail_params
   params.require(:order_detail).permit(:making_status, :amount, :price, :item_id, :order_id)
 end
 
 
+=======
+  def address_params
+    params.require(:order).permit(:post_code, :address, :name)
+
+  end
+>>>>>>> origin/develop
 
 =======
 >>>>>>> origin/develop
