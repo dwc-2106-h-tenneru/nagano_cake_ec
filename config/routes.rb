@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
 
   resources :items, only: [:index, :show]
-  resources :cart_items, only: [:index, :create, :destroy, :destroy_all, :update]
+  resources :cart_items, only: [:index, :create, :destroy, :update] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
   resources :orders, only: [:index, :create, :destroy, :update, :new]
 
 

@@ -27,6 +27,8 @@ class OrdersController < ApplicationController
       @order.address = Address.address
       @order.name = Address.name
 
+
+
     elsif params[:order][:address_option] == "2"
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
@@ -86,4 +88,10 @@ class OrdersController < ApplicationController
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
+
+  def address_params
+    params.require(:order).permit(:post_code, :address, :name)
+
+  end
+
 end
