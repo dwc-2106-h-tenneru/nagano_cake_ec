@@ -11,7 +11,7 @@
         <table class="table table-borderless">
           <tr>
             <th>購入者</th>
-            <th><%= link_to admin_customers_path(@customer.id) do %>
+            <th><%= link_to admin_customer_path(@customer) do %>
                   <%= @customer.last_name %><%= @customer.first_name %>
                 <% end %>
             </th>
