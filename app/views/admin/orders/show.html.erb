@@ -12,7 +12,7 @@
           <tr>
             <th>購入者</th>
             <th><%= link_to admin_customer_path(@customer) do %>
-                  <%= @customer.last_name %><%= @customer.first_name %>
+                  <%= @order.customer.last_name %><%= @order.customer.first_name %>
                 <% end %>
             </th>
           </tr>
@@ -28,11 +28,7 @@
           </tr>
           <tr>
             <th>支払方法</th>
-            <th><% if @order.payment_method == 0 %>クレジットカード
-                <% elsif %>
-                  <font color="silver">銀行振込</font>
-                <% end %>
-            </th>
+            <th><%= @order.payment_method %></th>
           </tr>
           <tr>
             <th>注文ステータス</th>
