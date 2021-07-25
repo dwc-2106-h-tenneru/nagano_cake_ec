@@ -7,9 +7,12 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
-    redirect_to admin_items_path
-    flash[:success] = "商品を登録しました"
+    if @item.save
+      redirect_to admin_items_path
+      flash[:success] = "商品を登録しました"
+    else
+      render :new
+    end
   end
 
   def show
