@@ -1,6 +1,6 @@
-<div class="container mt-3">
+<div class="container mt-3 mb-5">
   <h1>注文履歴一覧画面</h1>
-  <div class="row pt-4 mb-4">
+  <div class="row pt-4 pb-4">
     <table class="table table-bordered width=100%" >
       <tr class="table-active">
         <th width="10%">注文日</th>
@@ -10,6 +10,7 @@
         <th width="10%">ステータス</th>
         <th width="10%">注文詳細</th>
       </tr>
+
       <% @orders.each do |order| %>
       <tr>
         <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
@@ -27,6 +28,7 @@
         <td><%= link_to "表示する",order_path(order.id), class: "btn btn-primary btn-sm" %></td>
       </tr>
       <% end %>
+
     </table>
     <%= paginate @orders %>
   </div>
