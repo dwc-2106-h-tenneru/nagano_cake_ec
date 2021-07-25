@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def new
-    @customer = Customer.find(1)
+    @customer = Customer.find(current_customer.id)
     @order = Order.new
   end
 
@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     # @order = Order.confirm(order_params)
     @cart_items = current_customer.cart_items
-    @customer = Customer.find(1)
+    @customer = Customer.find(current_customer.id)
     @order.payment_method = params[:order][:payment_method]
     if params[:order][:address_option] == "0"
       @order.post_code = current_customer.post_code
@@ -49,20 +49,20 @@ class OrdersController < ApplicationController
   end
 
   def complete
-    @customer = Customer.find(1)
+    @customer = Customer.find(current_customer.id)
   end
 
   def index
     @orders = Order.page(params[:page]).reverse_order
-    @customer = Customer.find(1)
-    
+    @customer = Customer.find(current_customer.id)
+
     # @order = Order.find(order_params)
     # @cart_items = current_customer.cart_items
   end
 
   def show
     @item = Item.find(params[:id])
-    @customer = Customer.find(1)
+    @customer = Customer.find(current_customer.id)
 
   end
 

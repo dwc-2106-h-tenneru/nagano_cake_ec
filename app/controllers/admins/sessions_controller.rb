@@ -4,9 +4,9 @@ class Admins::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-   def new 
-     @customer = Customer.find(1)
-     
+   def new
+     @customer = Customer.find(current_customer.id)
+
   #   super
    end
 
