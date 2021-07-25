@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   def index
     if customer_signed_in?
-      @customer = Customer.find(1)
+      @customer = Customer.find(current_user.id)
     else
       @customer = Customer
     end
@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
 
   def show
     if customer_signed_in?
-      @customer = Customer.find(1)
+      @customer = Customer.find(current_user.id)
     else
       @customer = Customer
     end
