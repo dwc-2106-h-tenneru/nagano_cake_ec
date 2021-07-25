@@ -9,7 +9,7 @@
         <%= attachment_image_tag @item, :image, width: '70%', height: '70%' %>
         <p><strong><%= @item.name %></strong></p>
         <p><%= @item.introduction %></p>
-        <p class="border border-primary">￥<%= @item.add_tax_price.to_s(:delimited) %> (税込) </p>
+        <p class="border">￥<%= @item.add_tax_price.to_s(:delimited) %> (税込) </p>
 
         <%= form_with model: @cart_item ,url: cart_items_path, method: :post, local: true do |f| %>
           <%= f.hidden_field :item_id, value: @item.id %>
