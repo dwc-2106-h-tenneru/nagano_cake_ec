@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :admins
+  devise_for :admins, controllers: {
+  # sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
+}
   devise_for :customers, controllers: {
   sessions:      'customers/sessions',
   passwords:     'customers/passwords',
@@ -28,7 +32,7 @@ Rails.application.routes.draw do
       delete 'destroy_all'
     end
   end
-  resources :orders, only: [:index, :create, :destroy, :update, :new]
+  resources :orders, only: [:index, :create, :destroy, :update, :new, :show]
 
 
   namespace :admin do

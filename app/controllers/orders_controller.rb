@@ -66,6 +66,10 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @customer = Customer.find(1)
+    @order.shipping_cost = 800
+    @order_details = @order.order_details
   end
 
 
