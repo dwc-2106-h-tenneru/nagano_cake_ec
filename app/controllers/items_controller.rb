@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+  
   def index
     if customer_signed_in?
       @customer = Customer.find(current_customer.id)
