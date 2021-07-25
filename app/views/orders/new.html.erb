@@ -1,3 +1,5 @@
+  <div class="container">
+    <div class="row pt-4 mb-5">
 <h2>注文情報入力</h2>
 
 <%= form_with model: @order ,url: orders_confirm_path, method: :post, local: true do |f| %>
@@ -41,12 +43,7 @@
  <%#= f.radio_button :address_option, ""  %>
  <%#= f.radio_button :address_option, "" %>
  <%#= f.radio_button :address_option, "" %>
-
-
-
-
 <%= f.submit "確認画面に進む",class:"btn btn-success" %>
 <% end %>
-
-
-
+    </div>
+  </div>
