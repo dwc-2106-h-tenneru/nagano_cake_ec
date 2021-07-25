@@ -1,3 +1,5 @@
+  <div class="container">
+    <div class="row pt-4 mb-5">
 <h2>注文情報確認</h2>
 
 <%= form_with model: @order ,url: orders_path, method: :post, local: true do |f| %>
@@ -71,3 +73,5 @@
  <%#= f.hidden_field :order_id, value: @order.id %>
 <%= f.submit "注文を確定する",class:"btn btn-success" %>
  <% end %>
+    </div>
+  </div>

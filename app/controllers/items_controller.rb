@@ -1,13 +1,21 @@
 class ItemsController < ApplicationController
   def index
-    @customer = Customer.find(1)
-    @items = Item.all
+    if customer_signed_in?
+      @customer = Customer.find(current_customer.id)
+    else
+      @customer = Customer
+    end
+    @items = Item.page(params[:page]).reverse_order
     # @items = Item.order(id: :desc).page(params[:page]).reverse_order
     @genres = Genre.all
   end
 
   def show
-    @customer = Customer.find(1)
+    if customer_signed_in?
+      @customer = Customer.find(current_customer.id)
+    else
+      @customer = Customer
+    end
     @item = Item.find(params[:id])
     @genres = Genre.all
     @cart_item = CartItem.new

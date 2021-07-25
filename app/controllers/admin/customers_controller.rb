@@ -1,11 +1,10 @@
 class Admin::CustomersController < ApplicationController
- 
+
   #before_action :authenticate_admin!
 
-    def index
-     @Customers = Customer.all
-     
-    end
+  def index
+  	@Customers = Customer.all
+  end
 
 	def show
 	@Customer = Customer.find(params[:id])
@@ -24,11 +23,10 @@ class Admin::CustomersController < ApplicationController
 		else
 			render "index"
 		end
-
 	end
 
 	private
 	def customer_params
-	  params.require(:customer).permit(:first_name,:last_name,:kana_first_name,:kana_last_name,:postal_code,:residence,:phone_number,:email,:is_valid)
+	  params.require(:customer).permit(:first_name,:last_name,:kana_first_name,:kana_last_name,:postal_code,:phone_number,:email,:is_deleted)
 	end
 end
