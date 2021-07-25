@@ -1,34 +1,5 @@
 <div class="container mt-3">
   <h1>注文履歴一覧画面</h1>
-<<<<<<< HEAD
-  <div class="row pt-4 mb-5">
-    <table class="table table-bordered">
-
-      <tr class="table-active">
-        <th>注文日</th>
-        <th>配送先</th>
-        <th>注文商品</th>
-        <th>支払い金額</th>
-        <th>ステータス</th>
-        <th>注文詳細</th>
-      </tr>
-
-      <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-        <td>
-          <%= order.address %>
-          <%= order.post_code %>
-          <%= order.name %>
-        </td>
-        <td><%#= order.order_details.item %></td>
-        <td><%= order.total_price %></td>
-        <td><%= order.status %></td>
-        <td><%= link_to "詳細",order_path(order.id) %></td>
-      </tr>
-      <% end %>
-    </table>
-=======
   <div class="row pt-4 mb-4">
     <table class="table table-bordered width=100%" >
       <tr class="table-active">
@@ -58,6 +29,5 @@
       <% end %>
     </table>
     <%= paginate @orders %>
->>>>>>> origin/develop
   </div>
 </div>
