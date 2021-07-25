@@ -3,7 +3,7 @@ class CartItemsController < ApplicationController
 
   def index
     # @item = Item.find(params[:id])
-    @customer = Customer.find(1)
+    @customer = Customer.find(current_customer.id)
     @cart_item = CartItem.where(customer_id: current_customer.id)
     @cart_items = CartItem.all
     # @subtotal　= cart_item.item.price * cart_item.amount
@@ -26,7 +26,7 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    @customer = Customer.find(1)
+    @customer = Customer.find(current_customer.id)
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path
