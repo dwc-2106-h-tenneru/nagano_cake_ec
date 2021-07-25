@@ -4,4 +4,5 @@ class Address < ApplicationRecord
   def order_address
     self.post_code.to_s + self.address + self.name
   end
+
 end

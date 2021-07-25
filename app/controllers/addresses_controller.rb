@@ -15,7 +15,7 @@ class AddressesController < ApplicationController
 
   def edit
     @address = Address.find(params[:id])
-    @customer = Customer.find
+    @customer = Customer.find(current_customer.id)
   end
 
   def update
