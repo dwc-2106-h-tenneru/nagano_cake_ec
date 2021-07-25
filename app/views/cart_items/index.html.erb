@@ -1,6 +1,12 @@
 <h2>ショッピングカート</h2>
-<!--↓ここまだうまいことできてない-->
+<div class = "row">
+
  <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger" %>
+
+
+ <%= link_to "買い物を続ける", items_path,class:"btn btn-success" %>
+
+</div>
  <table class="table table-hover table-inverse">
   <thead>
    <tr>
@@ -44,11 +50,6 @@
       </th>
     </tr>
  </table>
- <%= link_to "買い物を続ける", items_path,class:"btn btn-success" %>
- <div></div>
- <%#= form_with model: @order ,url: orders_confirm_path, method: :post, local: true do |f| %>
- <%#= f.hidden_field :total_price, value: @sum %>
-  <%#= f.submit "情報入力を続ける",class:"btn btn-success" %>
- <%# end %>
-
+ <div class="mx-auto" style="width: 200px;">
  <%= link_to "情報入力を続ける", new_order_path,class:"btn btn-success" %>
+ </div>
