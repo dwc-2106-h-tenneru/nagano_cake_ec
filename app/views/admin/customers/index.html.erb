@@ -1,32 +1,35 @@
- <body> 
- 　<% provide(:title, '会員一覧') %>
-   <table class="table table-striped">
-    <% @Customers.each do |customer| %>
-     <thead>
-        <tr>
+ <dev class="container">
+  <div class="row">
+    <div class='mx-auto col-9 mb-4'>
+      <h3><span style="background-color:#EEEEEE">会員一覧</span></h3>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
             <th>会員ID</th>
-            <th>会員氏名(姓)</th>
-            <th>会員氏名(名)</th>
-            <th>会員ステータス</th>
-            <th>詳細情報</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th><%= customer.id %></th>
-            <th><%= customer.last_name %></th>
-            <th><%= customer. first_name %></th>
-            <th><% if customer.is_deleted == true%>
-            <th>
-                退会済み
-              <% else %>
-                有効
-              <% end %>
-              </th>
-              <th><%= link_to '詳細情報', admin_customer_path(customer) %></th>
-              <% end %>
-        </tr>
-     </tbody>
-
-      </tbody>
-</body>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id %></td>
+              <td><%= link_to admin_customer_path(customer) do %>
+                  <%= customer.last_name %><%= customer.first_name %>
+                  <% end %>
+              </td>
+              <td><%= customer.email %></td>
+              <td><% if customer.is_deleted == true %>
+                    <font color="silver">退会済み</font>
+                  <% elsif customer.is_deleted == false %>
+                    <font color="green">有効</font>
+                  <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

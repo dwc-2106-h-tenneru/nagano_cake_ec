@@ -18,7 +18,7 @@
             <th>支払方法</th>
             <th><% if @order.payment_method == 0 %>クレジットカード
                 <% elsif %>
-                  <font color="silver">銀行振込</font>
+                  <font>銀行振込</font>
                 <% end %>
             </th>
           </tr>
@@ -29,7 +29,7 @@
           </tr>
         </table>
     </div>
-    <div class="col-md-3 mt-8">
+    <div class="col-md-3">
       <div class="price">
         <table class='table table-bordered'>
           ■ 請求情報

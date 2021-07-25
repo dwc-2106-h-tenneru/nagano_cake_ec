@@ -1,11 +1,11 @@
 <div class="container mt-3 mb-5">
-<h3><%= @Customer.last_name %><%= @Customer.first_name %>さんの会員情報編集</h3>
+  <h3><span style="background-color:#EEEEEE"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</span></h3>
   <h2 class="head-line title_h2 text-center"></h2>
-  <%= form_with(model: @Customer, url:admin_customer_path, local: true ,method: :patch) do |f| %>
+  <%= form_with(model: @customer, url:admin_customer_path, local: true ,method: :patch) do |f| %>
 
   <div class="row pt-4">
     <div class="col-3">会員ＩＤ</div>
-    <div class="col-4"><%= @Customer.id %></div>
+    <div class="col-4"><%= @customer.id %></div>
   </div>
       <div class="row pt-2">
       <div class="col-3">氏名</div>
