@@ -4,6 +4,7 @@
       <div class="col-3">
         <%= render 'items/genre', genres: @genres %>
       </div>
+
       <div class="col-md-8 offset-md-1 mb-5">
         <%= attachment_image_tag @item, :image, width: '70%', height: '70%' %>
         <p><strong><%= @item.name %></strong></p>
