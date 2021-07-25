@@ -1,7 +1,7 @@
 class Admin::OrdersController < ApplicationController
   def show
      @order = Order.find(params[:id])
-     @customer = Customer.find(current_customer.id)
+     @customer = Customer.find(3)
      @order.shipping_cost = 800
      @order_details = @order.order_details
   end
