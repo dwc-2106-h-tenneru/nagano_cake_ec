@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
     else
       @customer = Customer
     end
-    @items = Item.all
+    @items = Item.page(params[:page]).reverse_order
     # @items = Item.order(id: :desc).page(params[:page]).reverse_order
     @genres = Genre.all
   end
