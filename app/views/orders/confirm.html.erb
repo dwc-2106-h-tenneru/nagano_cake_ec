@@ -50,25 +50,21 @@
     </div>
    </div>
    <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-7">
      <table class="table table-borderless">
        <tr>
         <th>支払方法</th>
          <th><%= @order.payment_method %></th>
+         <tr>
+                 <th>お届け先</th>
+        <th>〒<%= @order.post_code.to_s.insert(3, "-") %> <%= @order.address %></br>
+            <%= @order.name %>
+        </th>
+        </tr>
        </tr>
      </table>
     </div>
    </div>
-   <div class="row">
-    <div class="col-md-7">
-     <table class="table table-borderless">
-       <tr>
-        <th>お届け先</th>
-        <th>〒<%= @order.post_code.to_s.insert(3, "-") %> <%= @order.address %></br>
-            <%= @order.name %>
-        </th>
-       </tr>
-     </table>
       <%= f.hidden_field :address, value: @order.address %>
       <%= f.hidden_field :post_code, value: @order.post_code %>
       <%= f.hidden_field :name, value: @order.name %>
