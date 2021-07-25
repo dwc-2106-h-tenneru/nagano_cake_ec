@@ -1,5 +1,4 @@
   <div class="container">
-    <div class="row pt-4 mb-5">
 <h2>注文情報確認</h2>
 
 <%= form_with model: @order ,url: orders_path, method: :post, local: true do |f| %>
@@ -17,13 +16,13 @@
 <% @cart_items.each do |cart_item| %>
    <tr>
     <td><%= cart_item.item.name %></td>
-    <td><%= cart_item.item.add_tax_price %></td>
+    <td><%= converting_to_jpy(cart_item.item.add_tax_price) %></td>
     <td>
       <%= cart_item.amount %>
      <%#= link_to "変更", cart_item.amount(@cart_item), method: :patch, class:"btn btn-success" %>
      </td>
     <td>
-     <%= cart_item.item.add_tax_price * cart_item.amount %>
+     <%= converting_to_jpy(cart_item.item.add_tax_price * cart_item.amount) %>
      <!--ここはsum+=sub_total　と%= sub_total -->
     </td>
     </tr>
@@ -41,9 +40,9 @@
    </thead>
    <tbody>
     <tr>
-     <td><%= @order.shipping_cost %></td>
-     <td><%= @sum %></td>
-     <td><%= @order.shipping_cost + @sum %></td>
+     <td><%= converting_to_jpy(@order.shipping_cost) %></td>
+     <td><%= converting_to_jpy(@sum) %></td>
+     <td><%= converting_to_jpy(@order.shipping_cost + @sum) %></td>
     </tr>
    </tbody>
  </table>
@@ -71,7 +70,9 @@
  <%= f.hidden_field :payment_method, value: @order.payment_method %>
  <%= f.hidden_field :total_price, value: @order.shipping_cost + @sum %>
  <%#= f.hidden_field :order_id, value: @order.id %>
-<%= f.submit "注文を確定する",class:"btn btn-success" %>
+ <div class="mx-auto" style="width: 200px;">
+   <%= f.submit "注文を確定する",class:"btn btn-success" %>
+ </div>
  <% end %>
     </div>
   </div>
