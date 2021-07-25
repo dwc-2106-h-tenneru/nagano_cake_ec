@@ -1,32 +1,32 @@
  <body> 
  　<% provide(:title, '会員一覧') %>
- 
-    <thead>
-      <tr class="info">
-
-        <p>
-        <th>氏名</th>
-        </p>
-        <p>
-        <th>メールアドレス</th>
-        </p>
-      </tr>
-    <tbody>
-      <p>
-        <% @Customers.each do |customer| %>
-          <tr>
+   <table class="table table-striped">
+    <% @Customers.each do |customer| %>
+     <thead>
+        <tr>
             <th>会員ID</th>
-              <%= customer.id %>
-            </td>
-              <%= link_to 'show', admin_customer_path(customer) %>
-                <%= customer.last_name %>
-                <%= customer. first_name %>
-              <%# end %>
-            </td>
-            <p>
-            <th>メールアドレス</th>
-              <%= customer.email %>
-          </tr>
-        <% end %>
+            <th>会員氏名(姓)</th>
+            <th>会員氏名(名)</th>
+            <th>会員ステータス</th>
+            <th>詳細情報</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th><%= customer.id %></th>
+            <th><%= customer.last_name %></th>
+            <th><%= customer. first_name %></th>
+            <th><% if customer.is_deleted == true%>
+            <th>
+                退会済み
+              <% else %>
+                有効
+              <% end %>
+              </th>
+              <th><%= link_to '詳細情報', admin_customer_path(customer) %></th>
+              <% end %>
+        </tr>
+     </tbody>
+
       </tbody>
 </body>
