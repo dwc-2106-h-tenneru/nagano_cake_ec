@@ -11,7 +11,7 @@ class HomesController < ApplicationController
 
   def about
     if customer_signed_in?
-      @customer = Customer.find(current_user.id)
+      @customer = Customer.find(current_customer.id)
     else
       @customer = Customer
     end

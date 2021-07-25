@@ -1,6 +1,6 @@
 class Admin::HomesController < ApplicationController
+  
   def top
-    @customer = Customer.find(current_customer.id)
     @orders = Order.page(params[:page]).reverse_order
   end
 
