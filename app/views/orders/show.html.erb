@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
     <div class="row">
       <div class="col-md-3">
@@ -13,6 +14,92 @@
               <%= converting_to_jpy(@item.add_tax_price) %>
             </div>
         <!--テーブルを４商品横ならびの二行で、ページャ機能つける-->
+=======
+<dev class="container">
+  <h3 class="pt-3 ml-5"><span style="background-color:#EEEEEE">注文履歴詳細</span></h3>
+  <div class="row">
+    <div class="col-md-8 ml-5">
+        <table class="table table-bordered">
+          ■ 注文情報
+          <tr>
+            <th>注文日</th>
+            <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
+          </tr>
+          <tr>
+            <th>配送先</th>
+            <th>〒<%= @order.post_code.to_s.insert(3, "-") %> <%= @order.address %><br>
+                <%= @order.name %>
+            </th>
+          </tr>
+          <tr>
+            <th>支払方法</th>
+            <th><% if @order.payment_method == 0 %>クレジットカード
+                <% elsif %>
+                  <font color="silver">銀行振込</font>
+                <% end %>
+            </th>
+          </tr>
+          <tr>
+            <th>ステータス</th>
+            <th><%= @order.status %>
+            </th>
+          </tr>
+        </table>
+    </div>
+    <div class="col-md-3 mt-8">
+      <div class="price">
+        <table class='table table-bordered'>
+          ■ 請求情報
+          <tr>
+            <% @sum = 0 %>
+            <% @order_details.each do |order_detail| %>
+            <% @sum += order_detail.price * order_detail.amount %>
+            <% end %>
+	          <th>商品合計</th>
+	          <th><%= converting_to_jpy(@sum) %>円</th>
+          </tr>
+          <tr>
+	          <th>配送料</th>
+	          <th><%= @order.shipping_cost %>円</th>
+          </tr>
+          <tr>
+	          <th>ご請求額</th>
+	          <th><%= converting_to_jpy(@order.total_price) %>円</th>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
+  
+  
+  <div class="row">
+    <div class="col-md-10 ml-5 mb-4">
+      <div class="order_details">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            ■ 注文内容
+            <tr>
+              <th>商品</th>
+              <th>単価（税込）</th>
+              <th>個数</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @sum = 0 %>
+            <% @order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item.name %></td> <!--注文商品名-->
+              <td><%= converting_to_jpy(order_detail.price) %></td> <!--単価(税込)3桁区切り-->
+              <td><%= order_detail.amount %></td>
+              <td><%= converting_to_jpy(order_detail.price * order_detail.amount) %></td> <!--小計-->
+            </tr>
+            <% @sum += order_detail.price * order_detail.amount %>
+            <% end %>
+        </table>
+>>>>>>> origin/develop
+      </div>
+    </div>
+    
+  </div>
+</div>

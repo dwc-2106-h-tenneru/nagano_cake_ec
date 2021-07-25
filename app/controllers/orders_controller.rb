@@ -61,9 +61,16 @@ class OrdersController < ApplicationController
   end
 
   def show
+<<<<<<< HEAD
     @item = Item.find(params[:id])
     @customer = Customer.find(current_customer.id)
 
+=======
+    @order = Order.find(params[:id])
+    @customer = Customer.find(1)
+    @order.shipping_cost = 800
+    @order_details = @order.order_details
+>>>>>>> origin/develop
   end
 
 

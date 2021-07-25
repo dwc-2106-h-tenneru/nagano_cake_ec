@@ -1,7 +1,11 @@
 class Admin::ItemsController < ApplicationController
 
   def new
+<<<<<<< HEAD
     @customer = Customer.find(current_customer.id)
+=======
+    @customer = Customer.find(3)
+>>>>>>> origin/develop
     @item = Item.new
   end
 
@@ -13,17 +17,29 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+<<<<<<< HEAD
     @customer = Customer.find(current_customer.id)
+=======
+    @customer = Customer.find(3)
+>>>>>>> origin/develop
     @item = Item.find(params[:id])
   end
 
   def index
+<<<<<<< HEAD
     @customer = Customer.find(current_customer.id)
+=======
+    @customer = Customer.find(3)
+>>>>>>> origin/develop
     @items = Item.order(id: :desc).page(params[:page]).reverse_order
   end
 
   def edit
+<<<<<<< HEAD
     @customer = Customer.find(current_customer.id)
+=======
+    @customer = Customer.find(3)
+>>>>>>> origin/develop
     @item = Item.find(params[:id])
   end
 
