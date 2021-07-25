@@ -2,11 +2,7 @@ class Admin::GenresController < ApplicationController
   def index
     @genre = Genre.new
     @genres = Genre.all
-<<<<<<< HEAD
     @customer = Customer.(current_customer.id)
-=======
-    @customer = Customer.find(3)
->>>>>>> origin/develop
   end
 
   def create
@@ -21,11 +17,7 @@ class Admin::GenresController < ApplicationController
 
   def edit
     @genre = Genre.find(params[:id])
-<<<<<<< HEAD
     @customer = Customer.(current_customer.id)
-=======
-    @customer = Customer.find(3)
->>>>>>> origin/develop
   end
 
   def update
