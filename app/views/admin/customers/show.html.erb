@@ -1,50 +1,57 @@
 
  <body> 
  <% provide(:title, "会員一覧") %>
+  <p></p>
   <h2 class="head-line title_h2 text-center">
     <%= @Customer.last_name %>さんの会員詳細
     <div class="actions">
-        <%= link_to "編集",edit_admin_customer_path %>
   </h2>
-   <table class="table table-striped">
-
+   <table class="table">
+   <p> </p>
+              　<p></p>
  <tbody>
         <tr>
-            <th>会員ID</th>
-            <td>顧客ID<%= @Customer.id %>
-          <% if @Customer.is_deleted == true %>
-            <span><i class="fas fa-bullseye blue"></i>退会済
-          <% elsif @Customer.is_deleted == false %>
-            <i class="fas fa-bullseye red"></i>会員</span>
-          <% end %></td>
+            <td>会員ID</td>
+            <td><%= @Customer.id %></td>
         </tr>
+
+          
         <tr>
-            <th>会員氏名</th>
-            <td><%= @Customer.last_name %><%= @Customer.first_name %></td>
+            <td>会員氏名</td>
+            <td><%= @Customer.last_name %>  <%= @Customer.first_name %></td>
         </tr>
             <tr>
-            <th>フリガナ</th>
-            <td><%= @Customer.last_name_kana %><%= @Customer.first_name_kana %></td>
+            <td>フリガナ</td>
+            <td><%= @Customer.last_name_kana %>  <%= @Customer.first_name_kana %></td>
         </tr>
             <tr>
-            <th>郵便番号</th>
+            <td>郵便番号</td>
             <td><%= @Customer.post_code %></td>
         </tr>
             <tr>
-            <th>住所</th>
+            <td>住所</td>
             <td><%= @Customer.address %></td>
         </tr>
             <tr>
-            <th>電話番号</th>
+            <td>電話番号</td>
             <td><%= @Customer.phone_number %></td>
         </tr>
             <tr>
-            <th>メールアドレス</th>
+            <td>メールアドレス</td>
             <td><%= @Customer.email%></td>
         </tr>
-
+        <tr>
+            <td>会員ステータス</td>
+            <td><% if @Customer.is_deleted == true%>
+                退会済み
+              <% else %>
+                有効
+              <% end %></td>
+        </tr>
+      <th><%= link_to "編集",edit_admin_customer_path, class: "glyphicon glyphicon-folder-open btn btn-info" %>
+      <%= link_to " 注文履歴一覧を見る",admin_root_path, class: "glyphicon glyphicon-folder-open btn btn-info" %>
+       </th>
     </tbody>
 
-        <%#= link_to " 注文履歴一覧を見る", current_index_admin_order_path(@customer), class: "glyphicon glyphicon-folder-open btn btn-info" %>
-
+        
 </body>
