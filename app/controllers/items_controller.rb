@@ -1,27 +1,18 @@
 class ItemsController < ApplicationController
   def index
-<<<<<<< HEAD
-<<<<<<< HEAD
-    @customer = Customer.find(1)
-    @items = Item.page(params[:page]).reverse_order
-=======
-    @customer = Customer.find(current_customer.id)
-=======
     if customer_signed_in?
-      @customer = Customer.find(current_user.id)
+      @customer = Customer.find(current_customer.id)
     else
       @customer = Customer
     end
->>>>>>> origin/develop
     @items = Item.all
->>>>>>> origin/develop
     # @items = Item.order(id: :desc).page(params[:page]).reverse_order
     @genres = Genre.all
   end
 
   def show
     if customer_signed_in?
-      @customer = Customer.find(current_user.id)
+      @customer = Customer.find(current_customer.id)
     else
       @customer = Customer
     end
