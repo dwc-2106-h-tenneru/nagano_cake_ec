@@ -8,7 +8,7 @@ class Admin::OrderDetailsController < ApplicationController
       if @order_detail.making_status == "製作中"
         @order.status = 2
         @order.update(status: @order.status)
-      elsif @order_details.making_status == @order.order_details.where(making_status: "製作完了")
+      elsif @order_detail.making_status == "製作完了" #これだと１つ変えるとステータス更新されてしまう
         @order.status = 3
         @order.update(status: @order.status)
       end
