@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def new
     @customer = Customer.find(current_customer.id)
     @order = Order.new
@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
         item: cart_item.item,
         order: @order,
         amount: cart_item.amount,
-        price: cart_item.item.price
+        price: cart_item.item.add_tax_price
       )
       current_customer.cart_items.destroy_all
     end
@@ -64,6 +64,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @orders = current_customer.orders.page(params[:page]).reverse_order.order("id DESC")
     @order = Order.find(params[:id])
     @customer = Customer.find(current_customer.id)
     @order.shipping_cost = 800

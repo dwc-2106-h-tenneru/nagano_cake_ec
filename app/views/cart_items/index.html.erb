@@ -1,55 +1,62 @@
-<h2>ショッピングカート</h2>
-<div class = "row">
-
- <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger" %>
-
-
- <%= link_to "買い物を続ける", items_path,class:"btn btn-success" %>
-
-</div>
- <table class="table table-hover table-inverse">
-  <thead>
+<div class="container">
+ <h3 class="pt-3 ml-5"><span style="background-color:#EEEEEE">ショッピングカート</span></h3>
+  <div class="text-right pb-3">
+   <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger" %>
+  </div>
+  <div class="row">
+   <div class="col-md-12 mx-auto">
+    <table class="table table-bordered width=100%">
+     <thead class="thead-light">
+      <tr>
+       <th width="48%">商品名</th>
+       <th width="13%">単価</th>
+       <th width="13%">数量</th>
+       <th width="13%">小計</th>
+       <th width="13%"></th>
+      </tr>
+     </thead>
+   </div>
+   <% @sum = 0 %>
+   <% @cart_item.each do |cart_item| %>
    <tr>
-       <th>商品名</th>
-       <th>単価</th>
-       <th>数量</th>
-       <th>小計</th>
-       <th></th>
-   </tr>
-  </thead>
-  <tbody>
-<% @sum = 0 %>
-<% @cart_item.each do |cart_item| %>
-   <tr>
-    <td><%= cart_item.item.name %></td>
+    <td><%= attachment_image_tag cart_item.item, :image, width: '10%', height: 'auto' %>
+     <%= cart_item.item.name %></td>
     <td><%= converting_to_jpy(cart_item.item.add_tax_price) %></td>
     <td>
       <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local: true do |f| %>
       <%#= f.hidden_field :item_id, value: @item.id %>
        <%= f.select :amount, [[1], [2], [3], [4],[5]] %>
-       <%= f.submit '変更' %>
+       <%= f.submit '変更',class:"btn btn-success btn-sm" %>
        <% end %>
      <%#= link_to "変更", cart_item.amount(@cart_item), method: :patch, class:"btn btn-success" %>
      </td>
-    <td>
-     <%= converting_to_jpy(cart_item.item.add_tax_price * cart_item.amount) %>
+     <td>
+      <%= converting_to_jpy(cart_item.item.add_tax_price * cart_item.amount) %>
      <!--ここはsum+=sub_total　と%= sub_total -->
-    </td>
-    <td><%= link_to "カートから削除", cart_item_path(cart_item), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger" %></td>
-    </tr>
+     </td>
+     <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger" %></td>
+   </tr>
     <% @sum += cart_item.item.add_tax_price * cart_item.amount %>
-   </tbody>
- <% end %>
- </table>
- <table class="table table-hover table-inverse">
-   <tbody>
-    <tr>
+   <% end %>
+  </table>
+  <div class="row justify-content-between">
+   <div class="col-md-3 mt-8">
+    <%= link_to "買い物を続ける", items_path,class:"btn btn-primary" %>
+   </div>
+   <div class="col-md-5 mt-8">
+    <table class="table table-bordered">
+     <tr>
       <th>合計金額</th>
-     <th>
-      <%= converting_to_jpy(@sum) %>
+      <th>
+       <%= converting_to_jpy(@sum) %>
       </th>
-    </tr>
- </table>
- <div class="mx-auto" style="width: 200px;">
- <%= link_to "情報入力を続ける", new_order_path,class:"btn btn-success" %>
+     </tr>
+    </table>
+   </div>
  </div>
+ <div class="row">
+  <div class="mx-auto" style="width: 200px;">
+   <%= link_to "情報入力を続ける", new_order_path,class:"btn btn-success" %>
+  </div>
+ </div>
+</div>
