@@ -1,15 +1,14 @@
-<div class="container mt-3 mb-5">
 <h2>注文情報入力</h2>
+<div class="container d-flex align-items-center justify-content-center">
 
 <%= form_with model: @order ,url: orders_confirm_path, method: :post, local: true do |f| %>
  <h4>支払い方法</h4>
-
   <%= f.radio_button :payment_method, "クレジットカード" %>
   <%= f.label :payment_method, "クレジットカード" %>
   <%= f.radio_button :payment_method, "銀行振込" %>
   <%= f.label :payment_method, "銀行振込" %>
 
-  <h4>お届け先</h4>
+  <h4 class = "pt-3">お届け先</h4>
    <%= f.label :address, "お届け先" %>
    <br>
 
@@ -37,7 +36,7 @@
    <br>
    <%= f.label :name, "名前" %>
    <%= f.text_field :name %>
-   <br>
+   <br class = >
 
  <%#= f.radio_button :address_option, ""  %>
  <%#= f.radio_button :address_option, "" %>
