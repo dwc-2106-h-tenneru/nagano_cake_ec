@@ -10,21 +10,11 @@ class ApplicationController < ActionController::Base
 
   end
 
-  private
-  # 新規登録
-  def after_sign_up_path_for(resource_or_scope)
-        if resource_or_scope.is_a?(Admin)
-          admin_root_path
-        elsif resource_or_scope.is_a?(Customer)
-          customer_path
-        else
-          root_path
-        end
-  end
-  
-  # ログイン
+ private
   def after_sign_in_path_for(resource_or_scope)
-      if resource_or_scope.is_a?(Customer)
+      if resource_or_scope.is_a?(Admin)
+        admin_items_path
+      elsif resource_or_scope.is_a?(Customer)
         root_path
       else
         root_path
@@ -32,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def
-    after_sign_out_path_for(resource_or_scope)
+  after_sign_out_path_for(resource_or_scope)
       if resource_or_scope == :customer
         root_path
       elsif resource_or_scope == :admin
@@ -41,7 +31,6 @@ class ApplicationController < ActionController::Base
         root_path
       end
   end
-    
 
 
 end
