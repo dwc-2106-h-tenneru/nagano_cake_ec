@@ -21,10 +21,10 @@
               </td>
               <td><%= customer.email %></td>
               <td><% if customer.is_deleted == true %>
-                    <font color="silver">退会済み</font>
-                  <% elsif customer.is_deleted == false %>
-                    <font color="green">有効</font>
-                  <% end %>
+                  <font color="green">有効</font>
+                <% elsif customer.is_deleted == false %>
+                  <font color="silver">退会済み</font>
+                <% end %>
               </td>
             </tr>
           <% end %>

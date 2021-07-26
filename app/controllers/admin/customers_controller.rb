@@ -8,7 +8,6 @@ class Admin::CustomersController < ApplicationController
 
 	def show
 	@customer = Customer.find(params[:id])
-	@customer.is_deleted = false
 	end
 
 	def edit
