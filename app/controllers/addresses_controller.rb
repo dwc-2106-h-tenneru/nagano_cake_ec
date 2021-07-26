@@ -9,8 +9,13 @@ class AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    @address.save
-    redirect_to addresses_path
+    if @address.save
+      redirect_to addresses_path(@address),notice: "You have created receiver's address successfully."
+    else
+       @addresses = Address.all
+       @customer = Customer.find(current_customer.id)
+       render 'index'
+    end
   end
 
   def edit
