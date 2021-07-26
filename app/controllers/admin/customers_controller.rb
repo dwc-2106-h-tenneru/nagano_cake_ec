@@ -2,29 +2,21 @@ class Admin::CustomersController < ApplicationController
 
   #before_action :authenticate_admin!
 
-<<<<<<< HEAD
-    def index
-     @Customers = Customer.all
-
-    end
-=======
   def index
-  	@Customers = Customer.all
+  	@customers = Customer.all
   end
->>>>>>> origin/develop
 
 	def show
-	@Customer = Customer.find(params[:id])
-	@Customer.is_deleted = false
+	@customer = Customer.find(params[:id])
 	end
 
 	def edit
-	@Customer = Customer.find(params[:id])
+	@customer = Customer.find(params[:id])
 	end
 
 	def update
-	@Customer = Customer.find(params[:id])
-		if @Customer.update(customer_params)
+	@customer = Customer.find(params[:id])
+		if @customer.update(customer_params)
 		   flash[:success] = "変更完了"
 		   redirect_to admin_customer_path
 		else
