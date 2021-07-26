@@ -3,9 +3,9 @@
   <p class="notice text-success text-center"><%= notice %></p>
   <p class="alert text-danger text-center">
     <% if @address.errors.any? %>
-     <%= @address.errors.count %>erros
+     <%= @address.errors.count %>erros.
     <% @address.errors.full_messages.each do |message| %>
-      <%= message %>
+      <%= message %>.
     <% end %>
     <% end %>
   </p>

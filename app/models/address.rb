@@ -4,9 +4,7 @@ class Address < ApplicationRecord
   def order_address
     self.post_code.to_s + self.address + self.name
   end
-  
-  validates :address, presence: true
-  validates :name, presence: true
-  validates :post_code, presence: true
+
+  validates :address,:name,:post_code, presence: true
 
 end
