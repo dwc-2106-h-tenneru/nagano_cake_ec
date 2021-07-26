@@ -36,18 +36,18 @@
           <tr>
             <% @sum = 0 %>
             <% @order_details.each do |order_detail| %>
-            <% @sum += order_detail.price * order_detail.amount %>
+            <% @sum += order_detail.add_tax_price * order_detail.amount %>
             <% end %>
-	          <th>商品合計</th>
-	          <th><%= converting_to_jpy(@sum) %>円</th>
+                  <th>商品合計</th>
+                  <th><%= converting_to_jpy(@sum) %>円</th>
           </tr>
           <tr>
-	          <th>配送料</th>
-	          <th><%= @order.shipping_cost %>円</th>
+                  <th>配送料</th>
+                  <th><%= @order.shipping_cost %>円</th>
           </tr>
           <tr>
-	          <th>ご請求額</th>
-	          <th><%= converting_to_jpy(@order.total_price) %>円</th>
+                  <th>ご請求額</th>
+                  <th><%= converting_to_jpy(@order.total_price) %>円</th>
           </tr>
         </table>
       </div>
@@ -73,11 +73,11 @@
             <% @order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.item.name %></td> <!--注文商品名-->
-              <td><%= converting_to_jpy(order_detail.price) %></td> <!--単価(税込)3桁区切り-->
+              <td><%= converting_to_jpy(order_detail.add_tax_price) %></td> <!--単価(税込)3桁区切り-->
               <td><%= order_detail.amount %></td>
-              <td><%= converting_to_jpy(order_detail.price * order_detail.amount) %></td> <!--小計-->
+              <td><%= converting_to_jpy(order_detail.add_tax_price * order_detail.amount) %></td> <!--小計-->
             </tr>
-            <% @sum += order_detail.price * order_detail.amount %>
+            <% @sum += order_detail.add_tax_price * order_detail.amount %>
             <% end %>
         </table>
       </div>

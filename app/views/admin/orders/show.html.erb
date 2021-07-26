@@ -59,16 +59,16 @@
             <% @order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.item.name %></td> <!--注文商品名-->
-              <td><%= converting_to_jpy(order_detail.price) %></td> <!--単価(税込)3桁区切り-->
+              <td><%= converting_to_jpy(order_detail.add_tax_price) %></td> <!--単価(税込)3桁区切り-->
               <td><%= order_detail.amount %></td>
-              <td><%= converting_to_jpy(order_detail.price * order_detail.amount) %></td> <!--小計-->
+              <td><%= converting_to_jpy(order_detail.add_tax_price * order_detail.amount) %></td> <!--小計-->
               <td><%= form_with(model: order_detail, url: admin_order_detail_path(order_detail), local: true) do |f| %>
                     <%= f.select :making_status, OrderDetail.making_statuses.keys, {prompt: false} %>
                     <%= f.submit "更新", class: "btn btn-info btn-sm" %>
                   <% end %>
               </td><!--制作ステータス-->
             </tr>
-            <% @sum += order_detail.price * order_detail.amount %>
+            <% @sum += order_detail.add_tax_price * order_detail.amount %>
             <% end %>
         </table>
       </div>
