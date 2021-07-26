@@ -32,12 +32,5 @@ class ApplicationController < ActionController::Base
       end
   end
 
-  #def after_sign_in_path_for(resource)
-   # if  customers_singed_in?
-    #  root_path(resource)
-    #else
-     # admin_customers_path
-    #end
-#  end
 
 end
