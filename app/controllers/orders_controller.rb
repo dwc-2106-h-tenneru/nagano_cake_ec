@@ -53,7 +53,8 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.page(params[:page]).reverse_order
+    @orders = current_customer.orders
+    # @orders = Order.page(params[:page]).reverse_order
     @customer = Customer.find(current_customer.id)
 
     # @order = Order.find(order_params)
