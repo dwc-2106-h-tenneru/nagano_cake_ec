@@ -24,8 +24,8 @@
       <% @addresses.each do |address| %>
         <tr>
           <td><%= address.post_code%></td>
-          <td><%=address.address%></td>
-          <td><%=address.name%></td>
+          <td><%= address.address%></td>
+          <td><%= address.name%></td>
           <td><%= link_to "編集する", edit_address_path(address.id),class: "btn btn-success" %></td>
           <td> <%= link_to "削除する", address_path(address.id),class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
         </tr>

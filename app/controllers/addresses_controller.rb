@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
   def index
-    @addresses = Address.all
+    @addresses = Address.where(id: current_customer.addresses)
     @address = Address.new
     @customer = Customer.find(current_customer.id)
   end

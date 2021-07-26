@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def new
     @customer = Customer.find(current_customer.id)
     @order = Order.new
@@ -53,7 +55,8 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.page(params[:page]).reverse_order
+    @orders = current_customer.orders.page(params[:page]).reverse_order.order("id DESC")
+    # @orders = Order.page(params[:page]).reverse_order
     @customer = Customer.find(current_customer.id)
 
     # @order = Order.find(order_params)
