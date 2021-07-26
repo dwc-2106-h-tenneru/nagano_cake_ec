@@ -5,4 +5,6 @@ class Address < ApplicationRecord
     self.post_code.to_s + self.address + self.name
   end
 
+  validates :address,:name,:post_code, presence: true
+
 end
