@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     if params[:order][:address_option] == "0"
       @order.post_code = current_customer.post_code
       @order.address = current_customer.address
-      @order.name = current_customer.last_name
+      @order.name = current_customer.last_name + current_customer.first_name
 
     elsif params[:order][:address_option] == "1"
       @address = Address.find(params[:order][:id])

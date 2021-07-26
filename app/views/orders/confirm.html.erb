@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
  <h3 class="pt-3 ml-5"><span style="background-color:#EEEEEE">注文情報確認</span></h3>
   <div class="row">
@@ -29,6 +30,84 @@
       </tbody>
        <% end %>
      </table>
+=======
+  <div class="container">
+<h2>注文情報確認</h2>
+
+<%= form_with model: @order ,url: orders_path, method: :post, local: true do |f| %>
+ <table class="table table-hover table-inverse">
+  <thead>
+   <tr>
+       <th>商品名</th>
+       <th>単価</th>
+       <th>数量</th>
+       <th>小計</th>
+   </tr>
+  </thead>
+  <tbody>
+<% @sum = 0 %>
+<% @cart_items.each do |cart_item| %>
+   <tr>
+    <td><%= cart_item.item.name %></td>
+    <td><%= converting_to_jpy(cart_item.item.add_tax_price) %></td>
+    <td>
+      <%= cart_item.amount %>
+     <%#= link_to "変更", cart_item.amount(@cart_item), method: :patch, class:"btn btn-success" %>
+     </td>
+    <td>
+     <%= converting_to_jpy(cart_item.item.add_tax_price * cart_item.amount) %>
+     <!--ここはsum+=sub_total　と%= sub_total -->
+    </td>
+    </tr>
+    　<% @sum += cart_item.item.add_tax_price * cart_item.amount %>
+   </tbody>
+ <% end %>
+ </table>
+ <table class="table table-hover table-inverse mt-3">
+  <thead>
+   <tr>
+       <th>送料</th>
+       <th>商品合計</th>
+       <th>請求金額</th>
+   </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td><%= converting_to_jpy(@order.shipping_cost) %></td>
+     <td><%= converting_to_jpy(@sum) %></td>
+     <td><%= converting_to_jpy(@order.shipping_cost + @sum) %></td>
+    </tr>
+   </tbody>
+ </table>
+
+ <h3 class = "mt-5">支払い方法</h3>
+ <table class="table table-hover table-inverse">
+  <thead>
+   <tr>
+       <th><%= @order.payment_method %></th>
+   </tr>
+ </table>
+
+ <h3 class = "mt-5">届け先</h3>
+ <table class="table table-hover table-inverse">
+  <thead>
+   <tr>
+       <th><%= @order.address %></th>
+       <th><%= @order.post_code %></th>
+       <th><%= @order.name %></th>
+   </tr>
+ </table>
+ <%= f.hidden_field :address, value: @order.address %>
+ <%= f.hidden_field :post_code, value: @order.post_code %>
+ <%= f.hidden_field :name, value: @order.name %>
+ <%= f.hidden_field :payment_method, value: @order.payment_method %>
+ <%= f.hidden_field :total_price, value: @order.shipping_cost + @sum %>
+ <%#= f.hidden_field :order_id, value: @order.id %>
+ <div class="mx-auto" style="width: 200px;">
+   <%= f.submit "注文を確定する",class:"btn btn-success" %>
+ </div>
+ <% end %>
+>>>>>>> origin/develop
     </div>
     <div class="col-md-3 align-self-end">
      <table class="table table-bordered">
