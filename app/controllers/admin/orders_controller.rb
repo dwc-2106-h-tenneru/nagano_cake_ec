@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def show
      @order = Order.find(params[:id])
      @customer = @order.customer
@@ -9,12 +9,16 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-     @order = Order.find(params[:id])
+    @order = Order.find(params[:id])
+    @order_detail = @order.order_details
     if @order.update(order_params)
-      redirect_to admin_order_path(@order)
-      flash[:success] = "注文ステータスを更新しました"
-    else
-      render :show
+      # flash[:success] = "注文ステータスを更新しました"
+      if @order.status == "入金確認"
+        @order_detail.making_status = 1
+        @order_detail.update(order_detail_params)
+      end
+        redirect_to admin_order_path(@order)
+        flash[:success] = "注文ステータスを更新しました"
     end
   end
 
