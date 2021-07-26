@@ -55,9 +55,9 @@
                   <% end %>
               </td>
               <td><%= customer.email %></td>
-              <td><% if customer.is_deleted == true %>
+              <td><% if customer.is_deleted == false %>
                   <font color="green">有効</font>
-                <% elsif customer.is_deleted == false %>
+                <% elsif customer.is_deleted == true %>
                   <font color="silver">退会済み</font>
                 <% end %>
               </td>
