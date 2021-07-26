@@ -10,19 +10,19 @@ class Admin::OrderDetailsController < ApplicationController
         @order.status = 2
         @order.update(status: @order.status)
       end
-      @count = 0
-      @order.order_details.each do |order_detail|
-        if  order_detail.making_status_before_type_cast == 3
-          @count += 1
+        @count = 0
+        @order.order_details.each do |order_detail|
+          if  order_detail.making_status_before_type_cast == 3
+            @count += 1
+          end
         end
-      end
       if @count == @order_amount
-        # @order_detail.making_status == "製作完了" #これだと１つ変えるとステータス更新されてしまう
-        # @order.status = 3
         @order.update(status: 3)
       end
         redirect_to admin_order_path(@order_detail.order)
         flash[:success] = "製作ステータスを更新しました"
+    else
+        render :show
     end
   end
 
