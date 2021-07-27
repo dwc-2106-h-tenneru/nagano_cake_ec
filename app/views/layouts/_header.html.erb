@@ -7,7 +7,7 @@
       <a class="navbar-brand" href="/">NaganoCake<i class="fab fa-java"></i></a>
 
         <% if customer_signed_in? %>
-          <p class="offset-md-2">ようこそ、<%= @customer.last_name %>さん！</p>
+          <p class="wf-hannari offset-md-2">ようこそ、<%= @customer.last_name %>さん！</p>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
             <%= link_to 'マイページ', customer_path,class: 'nav-link' %>
