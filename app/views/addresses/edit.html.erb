@@ -1,5 +1,13 @@
 <div class="container mt-3">
   <h4>配送先編集</h4>
+  <p class="alert text-danger text-center">
+    <% if @address.errors.any? %>
+     <%= @address.errors.count %>erros.
+    <% @address.errors.full_messages.each do |message| %>
+      <%= message %>.
+    <% end %>
+    <% end %>
+  </p>
   <%= form_with model:@address, url:"/addresses/#{@address.id}", local:true do |f| %>
     <div class="row pt-4">
       <div class="col-3">郵便番号(ハイフンなし)</div>

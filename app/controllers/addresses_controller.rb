@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
   def index
-    @addresses = Address.all
+    @addresses = Address.where(id: current_customer.addresses)
     @address = Address.new
     @customer = Customer.find(current_customer.id)
   end
@@ -9,8 +9,13 @@ class AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    @address.save
-    redirect_to addresses_path
+    if @address.save
+      redirect_to addresses_path(@address),notice: "You have created receiver's address successfully."
+    else
+       @addresses = Address.all
+       @customer = Customer.find(current_customer.id)
+       render 'index'
+    end
   end
 
   def edit
@@ -20,8 +25,13 @@ class AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-    @address.update(address_params)
-    redirect_to addresses_path
+    if @address.update(address_params)
+      redirect_to addresses_path(@address),notice: "You have changed receiver's address successfully."
+    else
+      @customer = Customer.find(current_customer.id)
+      render 'edit'
+    end
+
   end
 
   def destroy

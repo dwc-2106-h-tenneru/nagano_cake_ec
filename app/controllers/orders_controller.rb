@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def new
     @customer = Customer.find(current_customer.id)
     @order = Order.new
@@ -13,7 +15,7 @@ class OrdersController < ApplicationController
     if params[:order][:address_option] == "0"
       @order.post_code = current_customer.post_code
       @order.address = current_customer.address
-      @order.name = current_customer.last_name
+      @order.name = current_customer.last_name + current_customer.first_name
 
     elsif params[:order][:address_option] == "1"
       @address = Address.find(params[:order][:id])
@@ -42,7 +44,7 @@ class OrdersController < ApplicationController
         item: cart_item.item,
         order: @order,
         amount: cart_item.amount,
-        price: cart_item.item.price
+        price: cart_item.item.add_tax_price
       )
       current_customer.cart_items.destroy_all
     end
@@ -53,7 +55,8 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.page(params[:page]).reverse_order
+    @orders = current_customer.orders.page(params[:page]).reverse_order.order("id DESC")
+    # @orders = Order.page(params[:page]).reverse_order
     @customer = Customer.find(current_customer.id)
 
     # @order = Order.find(order_params)
@@ -61,6 +64,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @orders = current_customer.orders.page(params[:page]).reverse_order.order("id DESC")
     @order = Order.find(params[:id])
     @customer = Customer.find(current_customer.id)
     @order.shipping_cost = 800

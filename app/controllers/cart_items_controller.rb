@@ -1,5 +1,5 @@
 class CartItemsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_customer!
 
   def index
     # @item = Item.find(params[:id])
@@ -19,9 +19,7 @@ class CartItemsController < ApplicationController
       redirect_to cart_items_path
     else
       # session[:cart_item] = @cart_item.attributes.slice(*cart_item_params.keys)
-      @genres = Genre.all
-      @item = Item.find_by(@cart_item.item_id)
-      redirect_to item_path(@item.id), flash: {alert: '※注文し直せ'}
+      redirect_to items_path
     end
   end
 
