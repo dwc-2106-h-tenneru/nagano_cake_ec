@@ -1,38 +1,4 @@
-<<<<<<< HEAD
- <body> 
- 　<% provide(:title, '会員一覧') %>
-    <table class="table table-striped">
-    <div class="container">
-    <h3><span style = "back-ground-color":#EEEEEE会員一覧</h3>
 
-    <% @Customers.each do |customer| %>
-     <thead>
-        <tr>
-            <th>会員ID</th>
-            <th>会員氏名(姓)</th>
-            <th>会員ステータス</th>
-            <th>詳細情報</th>
-        </tr>
-    </thead>
-
-        <tr>
-            <th><%= customer.id %></th>
-            <th><%= customer.last_name %><%= customer. first_name %></th>
-            <th><% if customer.is_deleted == true%>
-                退会済み
-              <% else %>
-                有効
-              <% end %>
-              </th>
-              <th><%= link_to '詳細情報', admin_customer_path(customer) %></th>
-              <% end %>
-        </tr>
-
-    </div>
-
-    </tbody>
-</body>
-=======
  <dev class="container">
   <div class="row">
     <div class='mx-auto col-9 mb-4'>
@@ -68,4 +34,4 @@
     </div>
   </div>
 </div>
->>>>>>> origin/develop
+

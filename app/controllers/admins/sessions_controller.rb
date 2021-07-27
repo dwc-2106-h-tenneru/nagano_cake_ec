@@ -5,11 +5,7 @@ class Admins::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
    #def new
-<<<<<<< HEAD
-     #@customer = Customer.find(current_customer.id)
-=======
 
->>>>>>> origin/develop
 
   #   super
    #end
