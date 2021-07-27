@@ -33,9 +33,9 @@
           </tr>
           <tr>
             <th>会員ステータス</th>
-            <th><% if @customer.is_deleted == true %>
+            <th><% if @customer.is_deleted == false %>
                   <font color="green">有効</font>
-                <% elsif @customer.is_deleted == false %>
+                <% elsif @customer.is_deleted == true %>
                   <font color="silver">退会済み</font>
                 <% end %>
             </th>
