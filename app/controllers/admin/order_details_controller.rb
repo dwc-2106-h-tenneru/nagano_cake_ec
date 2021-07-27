@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 class Admin::OrderDetailsController < ApplicationController
   before_action :authenticate_admin!
 
@@ -35,4 +33,3 @@ class Admin::OrderDetailsController < ApplicationController
   end
 
 end
->>>>>>> origin/develop
