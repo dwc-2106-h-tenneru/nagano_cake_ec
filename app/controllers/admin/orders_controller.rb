@@ -10,6 +10,7 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
+<<<<<<< HEAD
     @order_detail = @order.order_details
     if @order.update(order_params)
       # flash[:success] = "注文ステータスを更新しました"
@@ -19,6 +20,19 @@ class Admin::OrdersController < ApplicationController
       end
         redirect_to admin_order_path(@order)
         flash[:success] = "注文ステータスを更新しました"
+=======
+    if @order.update(order_params)
+      if @order.status == "入金確認"
+        @order.order_details.each do |order_detail|
+          order_detail.update(making_status: 1)
+        end
+        redirect_to admin_order_path(@order)
+      flash[:success] = "注文ステータスを更新しました"
+      else
+        redirect_to admin_order_path(@order)
+        flash[:success] = "注文ステータスを更新しました"
+      end
+>>>>>>> origin/develop
     end
   end
 
