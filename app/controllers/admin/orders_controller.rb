@@ -34,5 +34,9 @@ class Admin::OrdersController < ApplicationController
     params.require(:order_detail).permit(:making_status, :amount, :price, :item_id, :order_id)
   end
 
+<<<<<<< HEAD
 end
 
+=======
+end
+>>>>>>> origin/develop
